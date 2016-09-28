@@ -1,0 +1,45 @@
+buildscript {
+    dependencies {
+        classpath group: "org.robotframework", name: "swinglibrary", version: "1.9.6"
+        classpath files(mkdir("build/classes/main"))
+    }
+}
+plugins {
+  id "org.roboscratch.robot" version "0.1.1"
+}
+
+apply plugin: "java"
+apply plugin: "application"
+apply plugin: "jacoco"
+
+
+mainClassName = "edu.jsu.mcis.gamegogy.Game"
+sourceCompatibility = 1.7
+version = "0.0.1"
+
+jar {
+    manifest {
+        attributes "Implementation-Title": "Gamegogy",
+                   "Implementation-Version": version,
+                   "Main-Class": "edu.jsu.mcis.gamegogy.Main"
+    }
+}
+
+run {
+  standardInput = System.in
+}
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    testCompile group: "junit", name: "junit", version: "4.+"
+}
+
+jacocoTestReport {
+    group = "Reporting"
+    description = "Generate Jacoco coverage reports after running tests."
+    additionalSourceDirs = files(sourceSets.main.allJava.srcDirs)
+}
+
+runrobot.dependsOn build
