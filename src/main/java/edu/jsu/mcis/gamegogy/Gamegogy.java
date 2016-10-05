@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Gamegogy {
     
-    public static String findID(File file, String id) {
+    public static String findID(String type, String id) {
         List<String[]> list = CSV.fileReader(file);
         String[] array;
         
@@ -21,5 +21,7 @@ public class Gamegogy {
         }
         return null;
     }
+    
+    
     
 }
