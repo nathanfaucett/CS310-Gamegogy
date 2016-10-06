@@ -1,27 +1,45 @@
 package edu.jsu.mcis.gamegogy;
 
-import java.io.*;
-import java.util.*;
-
 public class Gamegogy {
-    
-    public static String findID(String type, String id) {
-        List<String[]> list = CSV.fileReader(file);
-        String[] array;
-        
-        for(int i =0; i < list.size(); i++) {
-            array = list.get(i);
-            if(id.equals(array[0])) {
-                String string = "[" + array[0] + "]";
-                for(int j = 1; j < array.length; j++) {
-                    string += " " + array[j];
-                }
-                return string;
-            }
+    Database d = new Database();
+
+    public Object findByID(String type, String id) {
+        if (type.equals("student")) {
+            Student studentObj = d.getStudent(id);
+            return studentObj;
+        }else if (type.equals("course")){
+            Course courseObj = d.getCourse(id);
+            return courseObj;
         }
         return null;
     }
     
+    public Object[] findAll(String type){
+        if (type.equals("student")) {
+            Student[] studentObjects = d.getAllStudents();
+            return studentObjects;
+        }else if (type.equals("course")){
+            Course[] courseObjects = d.getAllCourses();
+            return courseObjects;
+        }
+        return null;
+    }
     
+    public String toString(Student item){
+        String output = "";
+        output += item.getID();
+        output += item.getFirstName();
+        output += item.getLastName();
+        output += item.getEmail() + "@jsu.edu";
+        return output;   
+    }
     
+    public String toString(Course item){
+        String output = "";
+        output += item.getID();
+        output += item.getSemester();
+        output += item.getYear();
+        output += "(" +item.getEnrolled() + " students)";
+        return output;   
+    }
 }
