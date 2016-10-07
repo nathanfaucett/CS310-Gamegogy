@@ -15,16 +15,65 @@ public class DatabaseTest {
     @Test
     public void testGetStudent() {
         String[] info = {"111111","Jerrod","Shields","jshields"};
-        Student student = new Student(info);
+        Student testStudent = new Student(info);
         
-        assertEquals(student, database.getStudent("111111"));
+        Student dataStudent = database.getStudent("111111");
+        
+        assertEquals(testStudent.getID(), dataStudent.getID());
+        assertEquals(testStudent.getFirstName(), dataStudent.getFirstName());
+        assertEquals(testStudent.getLastName(), dataStudent.getLastName());
+        assertEquals(testStudent.getEmail(), dataStudent.getEmail());
     }
     
     @Test
     public void testGetCourse() {
         String[] info = {"99000","Spring","2013","11"};
-		Course course = new Course(info);
+		Course testCourse = new Course(info);
         
-        assertEquals(course, database.getCourse("99000"));
+        Course dataCourse = database.getCourse("99000");
+        
+        assertEquals(testCourse.getID(), dataCourse.getID());
+        assertEquals(testCourse.getSemester(), dataCourse.getSemester());
+        assertEquals(testCourse.getYear(), dataCourse.getYear());
+        assertEquals(testCourse.getEnrolled(), dataCourse.getEnrolled());
+    }
+    
+    @Test
+    public void testGetStudentFromMiddle() {
+        String[] info = {"111232","Isidro","Thomas","ithomas"};
+        Student testStudent = new Student(info);
+        
+        Student dataStudent = database.getStudent("111232");
+        
+        assertEquals(testStudent.getID(), dataStudent.getID());
+        assertEquals(testStudent.getFirstName(), dataStudent.getFirstName());
+        assertEquals(testStudent.getLastName(), dataStudent.getLastName());
+        assertEquals(testStudent.getEmail(), dataStudent.getEmail());
+    }
+    
+    @Test
+    public void testGetCourseFromMiddle() {
+        String[] info = {"99019","Fall","2013","20"};
+		Course testCourse = new Course(info);
+        
+        Course dataCourse = database.getCourse("99019");
+        
+        assertEquals(testCourse.getID(), dataCourse.getID());
+        assertEquals(testCourse.getSemester(), dataCourse.getSemester());
+        assertEquals(testCourse.getYear(), dataCourse.getYear());
+        assertEquals(testCourse.getEnrolled(), dataCourse.getEnrolled());
+    }
+    
+    @Test
+    public void testGetStudentFromEnd() {
+        String[] info = {"111410","Rory","Dominguez","rdominguez"};
+        Student testStudent = new Student(info);
+        
+        Student dataStudent = database.getStudent("111410");
+        
+        assertEquals(testStudent.getID(), dataStudent.getID());
+        assertEquals(testStudent.getFirstName(), dataStudent.getFirstName());
+        assertEquals(testStudent.getLastName(), dataStudent.getLastName());
+        assertEquals(testStudent.getEmail(), dataStudent.getEmail());
     }
 }
