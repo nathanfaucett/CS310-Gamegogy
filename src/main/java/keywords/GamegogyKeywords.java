@@ -5,8 +5,16 @@ import edu.jsu.mcis.gamegogy.*;
 
 
 public class GamegogyKeywords {
-
-    public boolean someCustomFunction(String a, String b) {
-        return a.equals(b);
+    private Gamegogy g;
+    String type;
+    String id;
+    
+    public void startGamegogyCLIWithArguments(String a, String b) {
+        g = new Gamegogy();
+        type = a;
+        id = b;
     }
-}
+    
+    public String getCommandLineOutput(){
+        return g.findByID(a,b);
+    }
