@@ -7,6 +7,7 @@ public class Database {
     HashMap<String, Course> courses;
     HashMap<String, Student> students;
     
+    
     public Database() {
         courses = new HashMap<String, Course>();
         students = new HashMap<String, Student>();
@@ -38,5 +39,27 @@ public class Database {
     
     public Course getCourse(String ID) {
         return courses.get(ID);
+    }
+    
+    public Student[] getAllStudents() {
+        Student[] array = new Student[students.size()];
+        int initial = 111111;
+        
+        for(int i = 0; i < array.length; i++) {
+            array[i] = getStudent("" + (initial + i));
+        }
+        
+        return array;
+    }
+    
+    public Course[] getAllCourses() {
+        Course[] array = new Course[courses.size()];
+        int initial = 99000;
+        
+        for(int i = 0; i < array.length; i++) {
+            array[i] = getCourse("" + (initial + i));
+        }
+        
+        return array;
     }
 }

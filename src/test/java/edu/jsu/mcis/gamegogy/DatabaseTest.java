@@ -67,13 +67,39 @@ public class DatabaseTest {
     @Test
     public void testGetStudentFromEnd() {
         String[] info = {"111410","Rory","Dominguez","rdominguez"};
-        Student testStudent = new Student(info);
+        Student dataStudent = new Student(info);
         
-        Student dataStudent = database.getStudent("111410");
+        Student testStudent = database.getStudent("111410");
         
         assertEquals(testStudent.getID(), dataStudent.getID());
         assertEquals(testStudent.getFirstName(), dataStudent.getFirstName());
         assertEquals(testStudent.getLastName(), dataStudent.getLastName());
         assertEquals(testStudent.getEmail(), dataStudent.getEmail());
+    }
+    
+    @Test
+    public void testGetStudentFromReturnedArray() {
+        Student[] array = database.getAllStudents();
+        Student dataStudent = array[0];
+        
+        Student testStudent = database.getStudent("111111");
+        
+        assertEquals(testStudent.getID(), dataStudent.getID());
+        assertEquals(testStudent.getFirstName(), dataStudent.getFirstName());
+        assertEquals(testStudent.getLastName(), dataStudent.getLastName());
+        assertEquals(testStudent.getEmail(), dataStudent.getEmail());
+    }
+    
+    @Test
+    public void testGetCourseFromReturnedArray() {
+        Course[] array = database.getAllCourses();
+		Course dataCourse = array[0];
+        
+        Course testCourse = database.getCourse("99000");
+        
+        assertEquals(testCourse.getID(), dataCourse.getID());
+        assertEquals(testCourse.getSemester(), dataCourse.getSemester());
+        assertEquals(testCourse.getYear(), dataCourse.getYear());
+        assertEquals(testCourse.getEnrolled(), dataCourse.getEnrolled());
     }
 }
