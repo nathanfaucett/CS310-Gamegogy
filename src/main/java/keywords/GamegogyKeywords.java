@@ -16,5 +16,6 @@ public class GamegogyKeywords {
     }
     
     public String getCommandLineOutput(){
-        return g.findByID(a,b);
+        return g.findByID(type,id).toString();
     }
+}

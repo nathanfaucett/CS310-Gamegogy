@@ -1,9 +1,9 @@
 package edu.jsu.mcis.gamegogy;
 
 public class Gamegogy {
-    Database d = new Database();
+    static Database d = new Database();
 
-    public Object findByID(String type, String id) {
+    public static Object findByID(String type, String id) {
         if (type.equals("student")) {
             Student studentObj = d.getStudent(id);
             return studentObj;
@@ -13,7 +13,7 @@ public class Gamegogy {
         }
         return null;
     }
-    
+    /*
     public Object[] findAll(String type){
         if (type.equals("student")) {
             Student[] studentObjects = d.getAllStudents();
@@ -24,6 +24,7 @@ public class Gamegogy {
         }
         return null;
     }
+    */
     
     public String toString(Student item){
         String output = "";
@@ -41,5 +42,14 @@ public class Gamegogy {
         output += item.getYear();
         output += "(" +item.getEnrolled() + " students)";
         return output;   
+    }
+    
+
+    public static void main(String[] args) {
+       if ((args[0].equals("student")) || (args[0].equals("course"))) {
+            System.out.println(findByID(args[0], args[1]).toString());
+        } else {
+            System.exit(0);
+        }
     }
 }

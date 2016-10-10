@@ -26,7 +26,7 @@ task uberjar(type: Jar) {
     with jar
 }
 
-mainClassName = "edu.jsu.mcis.gamegogy.Main"
+mainClassName = "edu.jsu.mcis.gamegogy.Gamegogy"
 sourceCompatibility = 1.7
 version = "0.0.1"
 
@@ -34,7 +34,7 @@ jar {
     manifest {
         attributes "Implementation-Title": "Gamegogy",
                    "Implementation-Version": version,
-                   "Main-Class": "edu.jsu.mcis.gamegogy.Main"
+                   "Main-Class": "edu.jsu.mcis.gamegogy.Gamegogy"
     }
 }
 
