@@ -15,24 +15,26 @@ public class GamegogyTest {
    @Test
     public void testFindSingleStudent() {
         String student = "[111111] Jerrod Shields jshields@jsu.edu";
-        Object pulledStudent = g.findByID("students","111111");
-        assertEquals(student, pulledStudent.toString() );
+        Student pulledStudent = (Student) g.findByID("student","111111");
+        assertEquals(student, g.toString(pulledStudent) );
     }
 
     @Test
     public void testFindAllStudents() {
-        Object[] pulledStudents = g.findAll("students");
+        Student[] pulledStudents = (Student[]) g.findAll("student");
         assertEquals(299, pulledStudents.length - 1 );
     }
     
+    @Test
     public void testFindSingleCourse() {
         String course = "[99000] Spring 2013 (11 students)";
-        Object pulledCourse = g.findByID("courses","99000");
-        assertEquals(course, pulledCourse.toString() );
+        Course pulledCourse = (Course) g.findByID("course","99000");
+        assertEquals(course, g.toString(pulledCourse) );
     }
     
+    @Test
     public void testFindAllCourses() {
-        Object[] pulledCourses = g.findAll("courses");
+        Course[] pulledCourses = (Course[]) g.findAll("course");
         assertEquals(24, pulledCourses.length - 1);
     }
     
