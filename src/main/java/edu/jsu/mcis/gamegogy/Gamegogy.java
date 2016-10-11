@@ -13,7 +13,7 @@ public class Gamegogy {
         }
         return null;
     }
-    
+
     public Object[] findAll(String type){
         if (type.equals("student")) {
             Student[] studentObjects = d.getAllStudents();
@@ -24,29 +24,29 @@ public class Gamegogy {
         }
         return null;
     }
-    
+
     public String toString(Student item){
         String output = "";
         output += "[" + item.getID() + "] ";
         output += item.getFirstName() + " ";
         output += item.getLastName() + " ";
         output += item.getEmail() + "@jsu.edu";
-        return output;   
+        return output;
     }
-    
+
     public String toString(Course item){
         String output = "";
         output += "[" + item.getID() + "] ";
         output += item.getSemester() + " ";
         output += item.getYear() + " ";
         output += "(" +item.getEnrolled() + " students)";
-        return output;   
+        return output;
     }
-    
+
 
     public static void main(String[] args) {
        Gamegogy g = new Gamegogy();
-       
+
         if ((args[0].equals("student")) && (args.length > 1)) {
             Student pulledStudent = (Student)g.findByID(args[0], args[1]);
             System.out.println(g.toString(pulledStudent));
