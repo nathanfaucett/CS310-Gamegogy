@@ -1,6 +1,6 @@
 package edu.jsu.mcis.gamegogy;
 
-public class Student {
+public class Student implements Comparable<Student> {
     private String id;
     private String firstName;
     private String lastName;
@@ -32,5 +32,18 @@ public class Student {
         output += lastName + " ";
         output += email + "@jsu.edu";
         return output;
+    }
+    
+    @Override
+    public int compareTo(Student otherStudent) {
+        int thisID = Integer.parseInt(id);
+        int otherID = Integer.parseInt(otherStudent.getID());
+        if(thisID < otherID) {
+            return -1;
+        }
+        else if(thisID > otherID) {
+            return 1;
+        }
+        else { return 0; }
     }
 }

@@ -33,32 +33,30 @@ public class Database {
         return array;
     }
     
-    public Student getStudent(String ID) {
-        return students.get(ID);
+    public Student getStudent(String id) {
+        return students.get(id);
     }
     
-    public Course getCourse(String ID) {
-        return courses.get(ID);
+    public Course getCourse(String id) {
+        return courses.get(id);
     }
     
     public Student[] getAllStudents() {
         Student[] array = new Student[students.size()];
-        int initial = 111111;
-        
-        for(int i = 0; i < array.length; i++) {
-            array[i] = getStudent("" + (initial + i));
-        }
+        Collection<Student> coll = students.values();
+        List<Student> list = new ArrayList<>(coll);
+        Collections.sort(list);
+        array = list.toArray(array);
         
         return array;
     }
     
     public Course[] getAllCourses() {
         Course[] array = new Course[courses.size()];
-        int initial = 99000;
-        
-        for(int i = 0; i < array.length; i++) {
-            array[i] = getCourse("" + (initial + i));
-        }
+        Collection<Course> coll = courses.values();
+        List<Course> list = new ArrayList<>(coll);
+        Collections.sort(list);
+        array = list.toArray(array);
         
         return array;
     }

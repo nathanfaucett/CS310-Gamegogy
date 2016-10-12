@@ -1,6 +1,6 @@
 package edu.jsu.mcis.gamegogy;
 
-public class Course {
+public class Course implements Comparable<Course> {
     private String id;
     private String semester;
     private String year;
@@ -32,5 +32,18 @@ public class Course {
         output += year + " ";
         output += "(" + enrolled + " students)";
         return output;
+    }
+    
+    @Override
+    public int compareTo(Course otherCourse) {
+        int thisID = Integer.parseInt(id);
+        int otherID = Integer.parseInt(otherCourse.getID());
+        if(thisID < otherID) {
+            return -1;
+        }
+        else if(thisID > otherID) {
+            return 1;
+        }
+        else { return 0; }
     }
 }
