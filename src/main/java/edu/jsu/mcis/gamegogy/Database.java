@@ -4,8 +4,8 @@ import java.io.*;
 import java.util.*;
 
 public class Database {
-    HashMap<String, Course> courses;
-    HashMap<String, Student> students;
+    private Map<String, Course> courses;
+    private Map<String, Student> students;
     
     
     public Database() {

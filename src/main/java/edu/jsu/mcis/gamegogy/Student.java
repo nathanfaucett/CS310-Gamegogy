@@ -1,29 +1,36 @@
 package edu.jsu.mcis.gamegogy;
 
 public class Student {
-    private String ID;
-    private String FirstName;
-    private String LastName;
-    private String Email;
+    private String id;
+    private String firstName;
+    private String lastName;
+    private String email;
+    
+    public Student(String idInfo, String firstNameInfo, String lastNameInfo, String emailInfo) {
+        id = idInfo;
+        firstName = firstNameInfo;
+        lastName = lastNameInfo;
+        email = emailInfo;
+    }
 
     public Student(String[] info) {
-        ID = info[0];
-        FirstName = info[1];
-        LastName = info[2];
-        Email = info[3];
+        id = info[0];
+        firstName = info[1];
+        lastName = info[2];
+        email = info[3];
     }
     
-    public String getID() { return ID; }
-    public String getFirstName() { return FirstName; }
-    public String getLastName() { return LastName; }
-    public String getEmail() { return Email; }
+    public String getID() { return id; }
+    public String getFirstName() { return firstName; }
+    public String getLastName() { return lastName; }
+    public String getEmail() { return email; }
 
     public String toString(){
         String output = "";
-        output += "[" + this.getID() + "] ";
-        output += this.getFirstName() + " ";
-        output += this.getLastName() + " ";
-        output += this.getEmail() + "@jsu.edu";
+        output += "[" + id + "] ";
+        output += firstName + " ";
+        output += lastName + " ";
+        output += email + "@jsu.edu";
         return output;
     }
 }
