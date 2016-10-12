@@ -16,7 +16,7 @@ public class GamegogyTest {
     public void testFindSingleStudent() {
         String student = "[111111] Jerrod Shields jshields@jsu.edu";
         Student pulledStudent = (Student) g.findByID("student","111111");
-        assertEquals(student, g.toString(pulledStudent) );
+        assertEquals(student, pulledStudent.toString() );
     }
 
     @Test
@@ -29,7 +29,7 @@ public class GamegogyTest {
     public void testFindSingleCourse() {
         String course = "[99000] Spring 2013 (11 students)";
         Course pulledCourse = (Course) g.findByID("course","99000");
-        assertEquals(course, g.toString(pulledCourse) );
+        assertEquals(course, pulledCourse.toString() );
     }
     
     @Test
