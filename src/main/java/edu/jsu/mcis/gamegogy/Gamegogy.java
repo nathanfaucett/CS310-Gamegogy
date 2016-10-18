@@ -24,7 +24,7 @@ public class Gamegogy {
         }
         return null;
     }
-    
+    /*
     public static void main(String[] args) {
         Gamegogy g = new Gamegogy();
         if (args.length < 1) {
@@ -55,4 +55,5 @@ public class Gamegogy {
             }
         }
     }
+	*/
 }
