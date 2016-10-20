@@ -1,7 +1,9 @@
 package edu.jsu.mcis.gamegogy;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.*;
 import javax.swing.*;
 
 public class SelectionPanel extends JPanel implements ActionListener {
@@ -12,10 +14,10 @@ public class SelectionPanel extends JPanel implements ActionListener {
     public SelectionPanel(Course[] courseObjects, String[] assignments) {
         courseObjs = courseObjects;
         courseAssignments = assignments;
+        courseIDs = new String[courseObjects.length];
         
-        
-        for(int i = 0; i < courseObjs.length; i++) {
-            courseIDs[i] = courseObjs[i].getID(); 
+        for(int i = 0; i < courseObjects.length; i++) {
+            courseIDs[i] = courseObjects[i].getID();
         }
         
         JComboBox course = new JComboBox(courseIDs);
@@ -31,8 +33,23 @@ public class SelectionPanel extends JPanel implements ActionListener {
         course.addActionListener(this);
         courseWork.addActionListener(this);
 
+        courseTerm.setBorder
+            (BorderFactory.createEmptyBorder(0, 20, 0, 0));
+        courseEnrollment.setBorder
+            (BorderFactory.createEmptyBorder(0, 0, 0, 20));
+        course.setBorder
+            (BorderFactory.createEmptyBorder(0, 50, 0, 0));
+        courseWork.setBorder
+            (BorderFactory.createEmptyBorder(0, 0, 0, 50));
+        GridLayout grid = new GridLayout(0,2);
+        grid.setHgap(100);
+        
+        this.setLayout(grid);
+        
         add(course);
         add(courseWork);
+        add(courseTerm);
+        add(courseEnrollment);
     }
     
     public void refreshCourseAssignments() {
