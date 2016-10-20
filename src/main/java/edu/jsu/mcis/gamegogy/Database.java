@@ -50,7 +50,6 @@ public class Database {
         List<Student> list = new ArrayList<>(coll);
         Collections.sort(list);
         array = list.toArray(array);
-        
         return array;
     }
     
@@ -60,7 +59,6 @@ public class Database {
         List<Course> list = new ArrayList<>(coll);
         Collections.sort(list);
         array = list.toArray(array);
-        
         return array;
     }
 }

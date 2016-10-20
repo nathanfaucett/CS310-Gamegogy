@@ -5,9 +5,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
-public class GamegogyGUI extends JFrame implements ActionListener{
+public class GamegogyGUI extends JFrame{
     private Gamegogy gamegogy;
-    private String[] courseIDs;
     private Course[] courseObjs;
     /*
         TODO: remove assignment of empty string set
@@ -24,29 +23,18 @@ public class GamegogyGUI extends JFrame implements ActionListener{
         */
         //CourseGrades[] courseAssigments = gamegogy.;
 
-        for(int i = 0; i < courseObjs.length; i++) {
-            courseIDs[i] = courseObjs[i].getID(); 
-        }
-        
         JFrame mainFrame= new JFrame();
         
         JPanel selectionPanel = 
-                new SelectionPanel(courseIDs, courseAssignments);
+                new SelectionPanel(courseObjs, courseAssignments);
         JPanel leaderboardPanel = 
                 new LeaderboardPanel();
         JPanel infoPanel = 
                 new InformationPanel();
         
-        
         mainFrame.add(selectionPanel);
         mainFrame.add(leaderboardPanel);
         mainFrame.add(infoPanel);
-        
-    }
-	
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        
     }
 
     @Override
@@ -56,7 +44,6 @@ public class GamegogyGUI extends JFrame implements ActionListener{
 
     public static void main(String[] args) {
         JFrame frame = new GamegogyGUI();
-        
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         frame.pack();
