@@ -25,7 +25,9 @@ public class Database {
         for(int i = 1; i < courseList.size(); i++) {
             info = courseList.get(i);
             courses.put(info[0], new Course(info));
-            //todo - load grades into course object
+            /*
+                TODO: load grades into course object
+            */
         }
     }
     
@@ -48,7 +50,6 @@ public class Database {
         List<Student> list = new ArrayList<>(coll);
         Collections.sort(list);
         array = list.toArray(array);
-        
         return array;
     }
     
@@ -58,7 +59,6 @@ public class Database {
         List<Course> list = new ArrayList<>(coll);
         Collections.sort(list);
         array = list.toArray(array);
-        
         return array;
     }
 }
