@@ -5,6 +5,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
-public class GamegogyGUI extends JPanel implements MouseListener {
+public class GamegogyGUI {
 
 }

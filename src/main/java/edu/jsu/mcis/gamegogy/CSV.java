@@ -14,8 +14,7 @@ public class CSV {
         
         try {
             BufferedReader bufReader = new BufferedReader(new FileReader(file));
-            String line = bufReader.readLine();
-            String[] header = parser.parseLine(line);
+            String line;
 
             while ((line = bufReader.readLine()) != null ) {
                 String[] lineData = parser.parseLine(line);

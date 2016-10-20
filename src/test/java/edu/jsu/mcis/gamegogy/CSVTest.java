@@ -13,7 +13,7 @@ public class CSVTest {
 	public void testListIsMade() {
 		List<String[]> list = CSV.fileReader(new File("src/main/java/resources/courses.csv"));
         String[] arrayToCheckAgainst = {"99000","Spring","2013","11"};
-        String[] arrayFromList = list.get(0);
+        String[] arrayFromList = list.get(1);
         assertArrayEquals(arrayToCheckAgainst, arrayFromList);
 	}
 }

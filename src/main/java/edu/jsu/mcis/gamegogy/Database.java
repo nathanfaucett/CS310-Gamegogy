@@ -17,12 +17,12 @@ public class Database {
         
         String[] info;
         
-        for(int i = 0; i < studentList.size(); i++) {
+        for(int i = 1; i < studentList.size(); i++) {
             info = studentList.get(i);
             students.put(info[0], new Student(info));
         }
         
-        for(int i = 0; i < courseList.size(); i++) {
+        for(int i = 1; i < courseList.size(); i++) {
             info = courseList.get(i);
             courses.put(info[0], new Course(info));
             //todo - load grades into course object
