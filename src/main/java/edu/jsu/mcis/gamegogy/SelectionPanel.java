@@ -9,7 +9,10 @@ import javax.swing.*;
 public class SelectionPanel extends JPanel implements ActionListener {
     private String[] courseAssignments, courseIDs;
     private Course[] courseObjs;
-    private JLabel courseTerm, courseEnrollment;
+    private JLabel courseTerm, courseEnrollment,
+            courseTermLabel, courseEnrollmentLabel,
+            courseBoxLabel, courseWorkBoxLabel;
+    public int selectedCourse = 0;
     
     public SelectionPanel(Course[] courseObjects, String[] assignments) {
         courseObjs = courseObjects;
@@ -20,35 +23,38 @@ public class SelectionPanel extends JPanel implements ActionListener {
             courseIDs[i] = courseObjects[i].getID();
         }
         
-        JComboBox course = new JComboBox(courseIDs);
-        JComboBox courseWork = new JComboBox(courseAssignments);
-        courseTerm = new JLabel();
-        courseEnrollment = new JLabel();
-
-        course.setSelectedIndex(0);
-        courseWork.setSelectedIndex(0);
-        courseTerm.setText("Term: ");
-        courseEnrollment.setText("Enrollment: ");
-
-        course.addActionListener(this);
-        courseWork.addActionListener(this);
-
-        courseTerm.setBorder
-            (BorderFactory.createEmptyBorder(0, 20, 0, 0));
-        courseEnrollment.setBorder
-            (BorderFactory.createEmptyBorder(0, 0, 0, 20));
-        course.setBorder
-            (BorderFactory.createEmptyBorder(0, 50, 0, 0));
-        courseWork.setBorder
-            (BorderFactory.createEmptyBorder(0, 0, 0, 50));
-        GridLayout grid = new GridLayout(0,2);
-        grid.setHgap(100);
+        JComboBox courseBox = new JComboBox(courseIDs);
+        courseBox.setName("CourseBox");
+        JComboBox assignmentBox = new JComboBox(courseAssignments);
+        assignmentBox.setName("AssignmentBox");
         
+        courseBoxLabel = new JLabel();
+        courseWorkBoxLabel = new JLabel();
+        courseTerm = new JLabel();
+        courseTermLabel = new JLabel();
+        courseEnrollment = new JLabel();
+        courseEnrollmentLabel = new JLabel();
+
+        courseBox.setSelectedIndex(0);
+        assignmentBox.setSelectedIndex(0);
+        courseBoxLabel.setText("Course ");
+        courseWorkBoxLabel.setText("Column ");
+        courseTermLabel.setText("Term: ");
+        courseEnrollmentLabel.setText("Enrollment: ");
+
+        courseBox.addActionListener(this);
+        assignmentBox.addActionListener(this);
+
+        GridLayout grid = new GridLayout(0,4);
         this.setLayout(grid);
         
-        add(course);
-        add(courseWork);
+        add(courseBoxLabel);
+        add(courseBox);
+        add(courseWorkBoxLabel);
+        add(assignmentBox);
+        add(courseTermLabel);
         add(courseTerm);
+        add(courseEnrollmentLabel);
         add(courseEnrollment);
     }
     
@@ -58,22 +64,35 @@ public class SelectionPanel extends JPanel implements ActionListener {
         */
     }
 
-    public void updateLabels(int courseIndexSelected) {
+    private void refreshLabels(int courseIndexSelected) {
         courseTerm.setText(
-            "Term: " + courseObjs[courseIndexSelected].getSemester() 
+            courseObjs[courseIndexSelected].getSemester() 
             + " " + courseObjs[courseIndexSelected].getYear()
             );
         
         courseEnrollment.setText(
-            "Enrollment: " + courseObjs[courseIndexSelected].getEnrolled()
+            courseObjs[courseIndexSelected].getEnrolled()
             );
+        
+        selectedCourse = courseIndexSelected;
+    }
+    
+    private void courseBoxUtilized(JComboBox box) {
+        int courseIndexSelected = box.getSelectedIndex();
+        refreshLabels(courseIndexSelected);
+        refreshCourseAssignments();
     }
     
     @Override
     public void actionPerformed(ActionEvent event) {
         JComboBox activeComboBox = (JComboBox) event.getSource();
-        int selectedItem = activeComboBox.getSelectedIndex();
-        updateLabels(selectedItem);
-        refreshCourseAssignments();
+        
+        if (activeComboBox.getName().equals("CourseBox")) {
+            courseBoxUtilized(activeComboBox);
+        } 
+        else if (activeComboBox.getName().equals("AssignmentBox")) {
+            GamegogyGUI.setSelectedAssignment(selectedCourse);
+        }
+        
     }
 }
