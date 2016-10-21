@@ -16,9 +16,8 @@ public class GamegogyGUI extends JFrame{
     public GamegogyGUI() {
         gamegogy = new Gamegogy();
         Dimension dim = getPreferredSize();
-        
         courseObjs = (Course[])gamegogy.findAll("course");
-        
+        this.setTitle("Gamegogy");
         /*
             TODO: add function to get course assignments
         */
@@ -31,14 +30,22 @@ public class GamegogyGUI extends JFrame{
         InformationPanel infoPanel = 
                 new InformationPanel();
         
-        this.add(selectionPanel);
-        //mainFrame.add(leaderboardPanel);
-        //mainFrame.add(infoPanel);
+        BorderLayout frameLayout = new BorderLayout();
+        this.setLayout(frameLayout);
+        
+        this.add(selectionPanel, BorderLayout.NORTH);
+        this.add(leaderboardPanel, BorderLayout.CENTER);
+        this.add(infoPanel, BorderLayout.SOUTH);
     }
 
     @Override
     public final Dimension getPreferredSize() {
         return new Dimension(400, 400);
+    }
+    
+    public static void setSelectedAssignment(int assignmentIndexSelected) {
+        LeaderboardPanel.refreshPanel(assignmentIndexSelected);
+        InformationPanel.refreshPanel(assignmentIndexSelected);
     }
 
     public static void main(String[] args) {
