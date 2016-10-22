@@ -6,11 +6,13 @@ import java.util.*;
 public class Database {
     private Map<String, Course> courses;
     private Map<String, Student> students;
+    private Map<String, CourseGrades> courseGrades;
     
     
     public Database() {
         courses = new HashMap<String, Course>();
         students = new HashMap<String, Student>();
+        courseGrades = new HashMap<String, CourseGrades>();
         
         List<String[]> studentList = CSV.fileReader(new File("src/main/java/resources/students.csv"));
         List<String[]> courseList = CSV.fileReader(new File("src/main/java/resources/courses.csv"));
@@ -25,9 +27,8 @@ public class Database {
         for(int i = 1; i < courseList.size(); i++) {
             info = courseList.get(i);
             courses.put(info[0], new Course(info));
-            /*
-                TODO: load grades into course object
-            */
+            List<String[]> gradesList = CSV.fileReader(new File("src/main/java/resources/courses/" + info[0] + ".csv"));
+            courseGrades.put(info[0], new CourseGrades(gradesList));
         }
     }
     
@@ -43,6 +44,10 @@ public class Database {
     public Course getCourse(String id) {
         return courses.get(id);
     }
+    
+    public CourseGrades getGrades(String id) {
+        return courseGrades.get(id);
+    } 
     
     public Student[] getAllStudents() {
         Student[] array = new Student[students.size()];

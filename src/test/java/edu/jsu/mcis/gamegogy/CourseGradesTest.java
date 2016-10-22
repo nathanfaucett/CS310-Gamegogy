@@ -26,4 +26,13 @@ public class CourseGradesTest {
         String[] data = {"111310", "66"};
         assertEquals(data, courseGrades.getHighest("Assignment 9"));
     }
+    
+    @Test
+    public void testGetAllGradesForAssignment() {
+        List<String[]> data = courseGrades.getAll("Assignment 9");
+        String[] highest = {"111310", "66"};
+        assertEquals(highest, data.get(0));
+        String[] fourthHighest = {"111335", "49"};
+        assertEquals(fourthHighest, data.get(3));
+    }
 }

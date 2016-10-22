@@ -102,4 +102,16 @@ public class DatabaseTest {
         assertEquals(testCourse.getYear(), dataCourse.getYear());
         assertEquals(testCourse.getEnrolled(), dataCourse.getEnrolled());
     }
+    
+    @Test
+    public void testGetRandomAssignmentFromFront() {
+        CourseGrades courseGrades = database.getGrades("99000");
+        assertEquals("43", courseGrades.getGrades("111262", "Assignment 9"));
+    }
+    
+    @Test
+    public void testGetTotalFromMiddle() {
+        CourseGrades courseGrades = database.getGrades("99017");
+        assertEquals("845", courseGrades.getGrades("111224", "Total"));
+    }
 }
