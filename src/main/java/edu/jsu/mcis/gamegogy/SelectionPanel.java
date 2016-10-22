@@ -11,8 +11,9 @@ public class SelectionPanel extends JPanel implements ActionListener {
     private Course[] courseObjs;
     private JLabel courseTerm, courseEnrollment,
             courseTermLabel, courseEnrollmentLabel,
-            courseBoxLabel, courseWorkBoxLabel;
-    public int selectedCourse = 0;
+            courseBoxLabel, assignmentBoxLabel;
+    private JComboBox courseBox, assignmentBox;
+    public int selectedCourse = 0, selectedAssignment = 0;
     
     public SelectionPanel(Course[] courseObjects, String[] assignments) {
         courseObjs = courseObjects;
@@ -23,13 +24,13 @@ public class SelectionPanel extends JPanel implements ActionListener {
             courseIDs[i] = courseObjects[i].getID();
         }
         
-        JComboBox courseBox = new JComboBox(courseIDs);
+        courseBox = new JComboBox(courseIDs);
         courseBox.setName("CourseBox");
-        JComboBox assignmentBox = new JComboBox(courseAssignments);
+        assignmentBox = new JComboBox(courseAssignments);
         assignmentBox.setName("AssignmentBox");
         
         courseBoxLabel = new JLabel();
-        courseWorkBoxLabel = new JLabel();
+        assignmentBoxLabel = new JLabel();
         courseTerm = new JLabel();
         courseTermLabel = new JLabel();
         courseEnrollment = new JLabel();
@@ -38,7 +39,7 @@ public class SelectionPanel extends JPanel implements ActionListener {
         courseBox.setSelectedIndex(0);
         assignmentBox.setSelectedIndex(0);
         courseBoxLabel.setText("Course ");
-        courseWorkBoxLabel.setText("Column ");
+        assignmentBoxLabel.setText("Column ");
         courseTermLabel.setText("Term: ");
         courseEnrollmentLabel.setText("Enrollment: ");
 
@@ -50,18 +51,23 @@ public class SelectionPanel extends JPanel implements ActionListener {
         
         add(courseBoxLabel);
         add(courseBox);
-        add(courseWorkBoxLabel);
+        add(assignmentBoxLabel);
         add(assignmentBox);
         add(courseTermLabel);
         add(courseTerm);
         add(courseEnrollmentLabel);
         add(courseEnrollment);
+        
+        courseBoxUtilized();
     }
     
     public void refreshCourseAssignments() {
         /*
             TODO: write code for retrieving a new set of course assignments
         */
+        selectedAssignment = 0;
+        assignmentBox.setSelectedItem(selectedAssignment);
+        GamegogyGUI.setSelectedAssignment(selectedAssignment);
     }
 
     private void refreshLabels(int courseIndexSelected) {
@@ -77,8 +83,8 @@ public class SelectionPanel extends JPanel implements ActionListener {
         selectedCourse = courseIndexSelected;
     }
     
-    private void courseBoxUtilized(JComboBox box) {
-        int courseIndexSelected = box.getSelectedIndex();
+    private void courseBoxUtilized() {
+        int courseIndexSelected = courseBox.getSelectedIndex();
         refreshLabels(courseIndexSelected);
         refreshCourseAssignments();
     }
@@ -88,10 +94,10 @@ public class SelectionPanel extends JPanel implements ActionListener {
         JComboBox activeComboBox = (JComboBox) event.getSource();
         
         if (activeComboBox.getName().equals("CourseBox")) {
-            courseBoxUtilized(activeComboBox);
+            courseBoxUtilized();
         } 
         else if (activeComboBox.getName().equals("AssignmentBox")) {
-            GamegogyGUI.setSelectedAssignment(selectedCourse);
+            GamegogyGUI.setSelectedAssignment(selectedAssignment);
         }
         
     }

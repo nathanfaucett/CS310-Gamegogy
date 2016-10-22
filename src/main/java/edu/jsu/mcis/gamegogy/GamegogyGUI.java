@@ -37,11 +37,6 @@ public class GamegogyGUI extends JFrame{
         this.add(leaderboardPanel, BorderLayout.CENTER);
         this.add(infoPanel, BorderLayout.SOUTH);
     }
-
-    @Override
-    public final Dimension getPreferredSize() {
-        return new Dimension(400, 400);
-    }
     
     public static void setSelectedAssignment(int assignmentIndexSelected) {
         LeaderboardPanel.refreshPanel(assignmentIndexSelected);
