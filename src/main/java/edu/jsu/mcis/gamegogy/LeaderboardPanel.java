@@ -10,14 +10,15 @@ public class LeaderboardPanel extends JPanel{
     private Dimension dim = this.getSize();
     
     public LeaderboardPanel() {
-        
-        Bar b = new Bar(dim, 100, 85);
-        Bar b2 = new Bar(dim, 100, 60);
-        Bar b3 = new Bar(dim, 100, 20);
+        Bar b = new Bar(100, 85);
+        Bar b2 = new Bar(100, 60);
+        Bar b3 = new Bar(100, 20);
         
         barArray.add(b);
         barArray.add(b2);
         barArray.add(b3);
+        
+        setPreferredSize(new Dimension(50 * barArray.size(), 300));
         
         for (Bar bar : barArray) {
             add(bar);

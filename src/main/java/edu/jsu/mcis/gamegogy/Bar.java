@@ -10,7 +10,7 @@ class Bar extends JComponent{
     private float width = 100, height = 20, pointsPossible, score,
             x = 20, y = 0;
     
-    public Bar(Dimension dim, int totalPointsPossible, int score) {
+    public Bar(int totalPointsPossible, int score) {
         pointsPossible = totalPointsPossible;
         this.score = score;
         
