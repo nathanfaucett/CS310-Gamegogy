@@ -6,7 +6,8 @@ import javax.swing.*;
 
 class Bar extends JComponent{
     private Color barColor = Color.green;
-    private float width, height = 20, pointsPossible, score,
+    private float width, height = 20,
+            pointsPossible, score,
             x = 20, y = 0;
     
     public Bar(int totalPointsPossible, int score) {

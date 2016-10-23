@@ -18,7 +18,7 @@ public class LeaderboardPanel extends JPanel{
         barArray.add(b2);
         barArray.add(b3);
         
-        setPreferredSize(new Dimension( 400,35 * barArray.size()));
+        setPreferredSize(new Dimension( 400,25 * barArray.size()));
         
         for (Bar bar : barArray) {
             add(bar);
