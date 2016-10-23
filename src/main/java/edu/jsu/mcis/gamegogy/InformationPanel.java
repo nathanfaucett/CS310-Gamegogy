@@ -24,6 +24,7 @@ public class InformationPanel extends JPanel {
         scoreLabel.setText("Score: ");
         
         GridLayout grid = new GridLayout(0,2);
+        grid.setHgap(20);
         this.setLayout(grid);
         
         add(idLabel);

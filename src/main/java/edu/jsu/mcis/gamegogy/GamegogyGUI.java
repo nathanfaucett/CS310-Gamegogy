@@ -31,6 +31,7 @@ public class GamegogyGUI extends JFrame{
                 new InformationPanel();
         
         BorderLayout frameLayout = new BorderLayout();
+        frameLayout.setVgap(10);
         this.setLayout(frameLayout);
         
         this.add(selectionPanel, BorderLayout.NORTH);

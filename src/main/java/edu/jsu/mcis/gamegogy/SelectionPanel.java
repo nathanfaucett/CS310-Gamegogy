@@ -47,6 +47,7 @@ public class SelectionPanel extends JPanel implements ActionListener {
         assignmentBox.addActionListener(this);
 
         GridLayout grid = new GridLayout(0,4);
+        grid.setHgap(20);
         this.setLayout(grid);
         
         add(courseBoxLabel);
