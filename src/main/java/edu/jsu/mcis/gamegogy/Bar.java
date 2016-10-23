@@ -3,12 +3,14 @@ package edu.jsu.mcis.gamegogy;
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.Rectangle2D;
 import javax.swing.*;
 
-class Bar extends JComponent implements ComponentListener{
+class Bar extends JComponent implements ComponentListener {
     private Color barColor = Color.green;
-    private float width , height = 20,
+    private float width, height = 20,
             pointsPossible, score,
             x = 20, y = 0;
     
@@ -20,7 +22,7 @@ class Bar extends JComponent implements ComponentListener{
     }
     
     public void calculateWidth(float pointsPossible, float points) {
-        this.width = (points / pointsPossible) * this.getWidth();
+        this.width = (points / pointsPossible) * (this.getWidth() * .8f);
     }
     
     @Override
@@ -39,7 +41,6 @@ class Bar extends JComponent implements ComponentListener{
         System.out.println(" --- Resized ");
         calculateWidth(pointsPossible, score);
     }
-
     @Override
     public void componentMoved(ComponentEvent e) {
     }
