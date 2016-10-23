@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class LeaderboardPanel extends JPanel implements ComponentListener, MouseListener{
     private ArrayList<Bar> barArray = new ArrayList();
-    private Dimension dim = this.getSize();
     
     public LeaderboardPanel() {
         Bar b = new Bar(100, 85);
@@ -30,13 +29,13 @@ public class LeaderboardPanel extends JPanel implements ComponentListener, Mouse
         
         for (Bar bar : barArray) {
             add(bar);
-            JLabel barlabel = new JLabel();
-            barlabel.setText("Bloop");
-            barlabel.setVerticalAlignment(JLabel.TOP);
-            add(barlabel);
+//            JLabel barlabel = new JLabel();
+//            barlabel.setText("Bloop");
+//            barlabel.setVerticalAlignment(JLabel.TOP);
+//            add(barlabel);
         }
         
-        GridLayout grid = new GridLayout(0,2);
+        GridLayout grid = new GridLayout(0,1);
         this.setLayout(grid);
         
         addMouseListener(this);

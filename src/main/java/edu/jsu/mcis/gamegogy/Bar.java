@@ -13,16 +13,22 @@ class Bar extends JComponent implements ComponentListener {
     private float width, height = 20,
             pointsPossible, score,
             x = 20, y = 0;
+    private int percentage;
     
     public Bar(int totalPointsPossible, int score) {
         pointsPossible = totalPointsPossible;
         this.score = score;
         calculateWidth(pointsPossible, score);
+        calculatePercentage(pointsPossible, score);
         addComponentListener(this);
+        this.setPreferredSize(new Dimension(200,25));
+    }
+    private void calculatePercentage(float totalPointsPossible, float score) {
+        this.percentage = (int) (score / totalPointsPossible * 100);
     }
     
     public void calculateWidth(float pointsPossible, float points) {
-        this.width = (points / pointsPossible) * (this.getWidth() * .8f);
+        this.width = (points / pointsPossible) * (this.getWidth() * .7f);
     }
     
     @Override
@@ -34,6 +40,12 @@ class Bar extends JComponent implements ComponentListener {
         g2d.fillRect((int)x,(int)y,(int)this.width,(int)this.height);
         g2d.setColor(Color.BLACK);
         g2d.draw(new Rectangle2D.Double(x,y,this.width,this.height));
+        g2d.drawString(Integer.toString(percentage) + "%",
+                this.width + 30,
+                this.height - 5);
+        g2d.drawString(Float.toString(score),
+                super.getWidth() - 40,
+                this.height - 5);
     }
     
     @Override
@@ -50,4 +62,5 @@ class Bar extends JComponent implements ComponentListener {
     @Override
     public void componentHidden(ComponentEvent e) {
     }
+    
 }
