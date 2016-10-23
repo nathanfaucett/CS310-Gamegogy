@@ -18,7 +18,7 @@ public class LeaderboardPanel extends JPanel{
         barArray.add(b2);
         barArray.add(b3);
         
-        setPreferredSize(new Dimension(50 * barArray.size(), 300));
+        setPreferredSize(new Dimension( 400,35 * barArray.size()));
         
         for (Bar bar : barArray) {
             add(bar);
@@ -30,10 +30,6 @@ public class LeaderboardPanel extends JPanel{
         
         GridLayout grid = new GridLayout(0,2);
         this.setLayout(grid);
-        
-//        add(b);
-//        add(b2);
-//        add(b3);
     }
     
     public static void refreshPanel(int assignmentIndexSelected) {
