@@ -14,10 +14,13 @@ public class SelectionPanel extends JPanel implements ActionListener {
             courseBoxLabel, assignmentBoxLabel;
     private JComboBox courseBox, assignmentBox;
     public int selectedCourse = 0, selectedAssignment = 0;
+    private Database database;
+    private CourseGrades grades;
     
-    public SelectionPanel(Course[] courseObjects, String[] assignments) {
+    public SelectionPanel(Course[] courseObjects, Database d) {
+        this.database = d;
         courseObjs = courseObjects;
-        courseAssignments = assignments;
+        String[] courseAssignments = new String[1];
         courseIDs = new String[courseObjects.length];
         
         for(int i = 0; i < courseObjects.length; i++) {
@@ -62,13 +65,16 @@ public class SelectionPanel extends JPanel implements ActionListener {
         courseBoxUtilized();
     }
     
-    public void refreshCourseAssignments() {
-        /*
-            TODO: write code for retrieving a new set of course assignments
-        */
+    public void refreshCourseAssignments(int courseIndexSelected) {
         selectedAssignment = 0;
         assignmentBox.setSelectedItem(selectedAssignment);
-        GamegogyGUI.setSelectedAssignment(selectedAssignment);
+        grades = database.getGrades(courseObjs[courseIndexSelected].getID());
+        GamegogyGUI.setSelectedAssignment(selectedAssignment, grades);
+        assignmentBox.removeAllItems();
+        String[] assignments = grades.getAssignments();
+        for (String assignment : assignments) {
+            assignmentBox.addItem(assignment);
+        }
     }
 
     private void refreshLabels(int courseIndexSelected) {
@@ -87,7 +93,7 @@ public class SelectionPanel extends JPanel implements ActionListener {
     private void courseBoxUtilized() {
         int courseIndexSelected = courseBox.getSelectedIndex();
         refreshLabels(courseIndexSelected);
-        refreshCourseAssignments();
+        refreshCourseAssignments(courseIndexSelected);
     }
     
     @Override
@@ -98,7 +104,7 @@ public class SelectionPanel extends JPanel implements ActionListener {
             courseBoxUtilized();
         } 
         else if (activeComboBox.getName().equals("AssignmentBox")) {
-            GamegogyGUI.setSelectedAssignment(selectedAssignment);
+            GamegogyGUI.setSelectedAssignment(selectedAssignment, grades);
         }
         
     }

@@ -40,7 +40,7 @@ public class LeaderboardPanel extends JPanel implements ComponentListener, Mouse
         addComponentListener(this);
     }
     
-    public static void refreshPanel(int assignmentIndexSelected) {
+    public void refreshPanel(int assignmentIndexSelected, CourseGrades grades) {
         
     }
     

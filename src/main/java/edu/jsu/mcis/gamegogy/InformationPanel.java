@@ -37,7 +37,7 @@ public class InformationPanel extends JPanel {
         add(score);
     }
     
-    public static void refreshPanel(int assignmentIndexSelected) {
+    public void refreshPanel(int assignmentIndexSelected, CourseGrades grades) {
         
     }
 }

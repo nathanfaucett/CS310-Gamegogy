@@ -6,29 +6,24 @@ import javax.swing.*;
 import java.util.*;
 
 public class GamegogyGUI extends JFrame{
-    private Gamegogy gamegogy;
+
+    
+    private Database database;
     private Course[] courseObjs;
-    private String[] courseAssignments = {" "};
-    /*
-        TODO: remove assignment of empty string set
-    */
+    private static CourseGrades currentCourseGrades;
+    private static SelectionPanel selectionPanel;
+    private static LeaderboardPanel leaderboardPanel;
+    private static InformationPanel infoPanel;
 
     public GamegogyGUI() {
-        gamegogy = new Gamegogy();
+        database = new Database();
         Dimension dim = getPreferredSize();
-        courseObjs = (Course[])gamegogy.findAll("course");
+        courseObjs = (Course[])database.getAllCourses();
         this.setTitle("Gamegogy");
-        /*
-            TODO: add function to get course assignments
-        */
-        //CourseGrades[] courseAssigments = gamegogy.;
         
-        SelectionPanel selectionPanel = 
-                new SelectionPanel(courseObjs, courseAssignments);
-        LeaderboardPanel leaderboardPanel = 
-                new LeaderboardPanel();
-        InformationPanel infoPanel = 
-                new InformationPanel();
+        selectionPanel = new SelectionPanel(courseObjs, database);
+        leaderboardPanel = new LeaderboardPanel();
+        infoPanel = new InformationPanel();
         
         BorderLayout frameLayout = new BorderLayout();
         frameLayout.setVgap(10);
@@ -39,9 +34,15 @@ public class GamegogyGUI extends JFrame{
         this.add(infoPanel, BorderLayout.SOUTH);
     }
     
-    public static void setSelectedAssignment(int assignmentIndexSelected) {
-        LeaderboardPanel.refreshPanel(assignmentIndexSelected);
-        InformationPanel.refreshPanel(assignmentIndexSelected);
+    public static void setSelectedAssignment(int assignmentIndexSelected,
+            CourseGrades grades) {
+        /*
+        TODO: setting coursegrades for gamegogoyGUI is pointless if it is
+        passed to all other panels.
+        */
+        currentCourseGrades = grades;
+        leaderboardPanel.refreshPanel(assignmentIndexSelected, grades);
+        infoPanel.refreshPanel(assignmentIndexSelected, grades);
     }
 
     public static void main(String[] args) {
