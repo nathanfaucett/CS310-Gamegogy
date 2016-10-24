@@ -5,21 +5,28 @@ import java.util.*;
 
 public class CourseGrades {
     private Map<String, Map<String, Integer>> assignments;
+    private String[] header;
     
     public CourseGrades(List<String[]> list) {
         assignments = new HashMap<String, Map<String, Integer>>();
-        String[] header = list.get(0);
+        String[] array = list.get(0);
+        header = new String[array.length-1];
         String[] info;
-        for(int i = 1; i < header.length; i++) {
+        for(int i = 1; i < array.length; i++) {
             Map<String, Integer> studentInfo = new HashMap<String, Integer>();
             for(int j = 1; j < list.size(); j++) {
                 info = list.get(j);
                 String studentId = info[0];
                 studentInfo.put(studentId, Integer.parseInt(info[i]));
             }
-            assignments.put(header[i],studentInfo);
+            header[i-1] = array[i];
+            assignments.put(array[i],studentInfo);
         }
         
+    }
+    
+    public String[] getAssignments() {
+        return header;
     }
     
     public String getGrades(String student, String assignment) {

@@ -35,4 +35,11 @@ public class CourseGradesTest {
         String[] fourthHighest = {"111335", "49"};
         assertEquals(fourthHighest, data.get(3));
     }
+    
+    @Test
+    public void testGetAssignments() {
+        String[] assignments = {"Total","Assignment 1","Assignment 2","Assignment 3","Assignment 4","Assignment 5",
+                            "Assignment 6","Assignment 7","Assignment 8","Assignment 9","Exam 1"};
+        assertEquals(assignments, courseGrades.getAssignments());
+    }
 }
