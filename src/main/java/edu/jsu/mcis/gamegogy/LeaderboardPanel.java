@@ -19,11 +19,13 @@ public class LeaderboardPanel extends JPanel implements ComponentListener, Mouse
         Bar b2 = new Bar(100, 60);
         Bar b3 = new Bar(100, 20);
         Bar b4 = new Bar(100, 100);
+        Bar b5 = new Bar(100, 50);
         
         barArray.add(b);
         barArray.add(b2);
         barArray.add(b3);
         barArray.add(b4);
+        barArray.add(b5);
         
         setPreferredSize(new Dimension( 400,25 * barArray.size()));
         
