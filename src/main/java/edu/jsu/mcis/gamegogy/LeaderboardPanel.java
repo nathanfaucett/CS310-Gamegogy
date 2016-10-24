@@ -15,11 +15,11 @@ public class LeaderboardPanel extends JPanel implements ComponentListener, Mouse
     private ArrayList<Bar> barArray = new ArrayList();
     
     public LeaderboardPanel() {
-        Bar b = new Bar(100, 85);
-        Bar b2 = new Bar(100, 60);
-        Bar b3 = new Bar(100, 20);
-        Bar b4 = new Bar(100, 100);
-        Bar b5 = new Bar(100, 50);
+        Bar b = new Bar(200, 85);
+        Bar b2 = new Bar(200, 60);
+        Bar b3 = new Bar(200, 20);
+        Bar b4 = new Bar(200, 100);
+        Bar b5 = new Bar(200, 50);
         
         barArray.add(b);
         barArray.add(b2);
@@ -31,10 +31,6 @@ public class LeaderboardPanel extends JPanel implements ComponentListener, Mouse
         
         for (Bar bar : barArray) {
             add(bar);
-//            JLabel barlabel = new JLabel();
-//            barlabel.setText("Bloop");
-//            barlabel.setVerticalAlignment(JLabel.TOP);
-//            add(barlabel);
         }
         
         GridLayout grid = new GridLayout(0,1);
@@ -55,6 +51,7 @@ public class LeaderboardPanel extends JPanel implements ComponentListener, Mouse
         System.out.println("Clicked at: " + x
                 + " " + y + " On bar " + getComponentAt(x, y));
     }
+    
     @Override
     public void mousePressed(MouseEvent event) {}
     @Override

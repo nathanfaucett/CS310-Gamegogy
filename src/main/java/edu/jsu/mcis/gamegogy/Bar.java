@@ -50,7 +50,6 @@ class Bar extends JComponent implements ComponentListener {
     
     @Override
     public void componentResized(ComponentEvent e) {
-        System.out.println(" --- Resized ");
         calculateWidth(pointsPossible, score);
     }
     @Override
