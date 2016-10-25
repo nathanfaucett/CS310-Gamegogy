@@ -4,8 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class InformationPanel extends JPanel {
-    private JLabel id, name, email, score,
-            idLabel, nameLabel, emailLabel, scoreLabel;
+    private JLabel id, name, email, score;
     private Database database;
     
     public InformationPanel(Database db) {
@@ -15,27 +14,14 @@ public class InformationPanel extends JPanel {
         name = new JLabel();
         email = new JLabel();
         score = new JLabel();
-        idLabel = new JLabel();
-        nameLabel = new JLabel();
-        emailLabel = new JLabel();
-        scoreLabel = new JLabel();
         
-        idLabel.setText("ID: ");
-        nameLabel.setText("Name: ");
-        emailLabel.setText("Email: ");
-        scoreLabel.setText("Score: ");
-        
-        GridLayout grid = new GridLayout(0,2);
+        GridLayout grid = new GridLayout(0,1);
         grid.setHgap(20);
         this.setLayout(grid);
         
-        add(idLabel);
         add(id);
-        add(nameLabel);
         add(name);
-        add(emailLabel);
         add(email);
-        add(scoreLabel);
         add(score);
     }
     
@@ -44,20 +30,20 @@ public class InformationPanel extends JPanel {
         String[] assignments = grades.getAssignments();
         String[] highestGrade = grades.getHighest(assignments[assignmentIndexSelected]);
         Student currentStudent = database.getStudent(highestGrade[0]);
-        id.setText(currentStudent.getID());
-        name.setText(currentStudent.getFirstName() + " " 
+        id.setText("ID: " + currentStudent.getID());
+        name.setText("Name: " + currentStudent.getFirstName() + " " 
                 + currentStudent.getLastName());
-        email.setText(currentStudent.getEmail() + "@jsu.edu");
-        score.setText(highestGrade[1]);
+        email.setText("Email: " + currentStudent.getEmail() + "@jsu.edu");
+        score.setText("Score: " + highestGrade[1]);
     }
     
     public void setLabels(String studentID, float grade){
         Student currentStudent = database.getStudent(studentID);
-        id.setText(currentStudent.getID());
-        name.setText(currentStudent.getFirstName() + " " 
+        id.setText("ID: " + currentStudent.getID());
+        name.setText("Name: " + currentStudent.getFirstName() + " " 
                 + currentStudent.getLastName());
-        email.setText(currentStudent.getEmail() + "@jsu.edu");
-        score.setText("" + grade);
+        email.setText("Email: " + currentStudent.getEmail() + "@jsu.edu");
+        score.setText("Score: " +grade);
     }
     
 }
