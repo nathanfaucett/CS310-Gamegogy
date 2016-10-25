@@ -21,9 +21,9 @@ public class GamegogyGUI extends JFrame{
         courseObjs = (Course[])database.getAllCourses();
         this.setTitle("Gamegogy");
         
-        selectionPanel = new SelectionPanel(courseObjs, database);
-        leaderboardPanel = new LeaderboardPanel();
-        infoPanel = new InformationPanel();
+        infoPanel = new InformationPanel(database);
+        leaderboardPanel = new LeaderboardPanel(infoPanel);
+        selectionPanel = new SelectionPanel(courseObjs, database, this);
         
         BorderLayout frameLayout = new BorderLayout();
         frameLayout.setVgap(10);
@@ -34,13 +34,8 @@ public class GamegogyGUI extends JFrame{
         this.add(infoPanel, BorderLayout.SOUTH);
     }
     
-    public static void setSelectedAssignment(int assignmentIndexSelected,
+    public void setSelectedAssignment(int assignmentIndexSelected,
             CourseGrades grades) {
-        /*
-        TODO: setting coursegrades for gamegogoyGUI is pointless if it is
-        passed to all other panels.
-        */
-        currentCourseGrades = grades;
         leaderboardPanel.refreshPanel(assignmentIndexSelected, grades);
         infoPanel.refreshPanel(assignmentIndexSelected, grades);
     }

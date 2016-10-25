@@ -2,36 +2,23 @@ package edu.jsu.mcis.gamegogy;
 
 import com.sun.java.accessibility.util.AWTEventMonitor;
 import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
+import java.util.*;
 
 public class LeaderboardPanel extends JPanel implements ComponentListener, MouseListener{
     private ArrayList<Bar> barArray = new ArrayList();
+    private InformationPanel infoPanel;
     
-    public LeaderboardPanel() {
-        Bar b = new Bar(200, 85);
-        Bar b2 = new Bar(200, 60);
-        Bar b3 = new Bar(200, 20);
-        Bar b4 = new Bar(200, 100);
-        Bar b5 = new Bar(200, 50);
-        
-        barArray.add(b);
-        barArray.add(b2);
-        barArray.add(b3);
-        barArray.add(b4);
-        barArray.add(b5);
-        
-        setPreferredSize(new Dimension( 400,25 * barArray.size()));
-        
-        for (Bar bar : barArray) {
-            add(bar);
-        }
+    public LeaderboardPanel(InformationPanel informationPanel) {
+        this.infoPanel = informationPanel;
+        setPreferredSize(new Dimension( 400, 100));
         
         GridLayout grid = new GridLayout(0,1);
         this.setLayout(grid);
@@ -41,6 +28,18 @@ public class LeaderboardPanel extends JPanel implements ComponentListener, Mouse
     }
     
     public void refreshPanel(int assignmentIndexSelected, CourseGrades grades) {
+        removeAll();
+        String[] assignments = grades.getAssignments();
+        List<String[]> gradeList = grades.getAll(assignments[assignmentIndexSelected]);
+        barArray = new ArrayList<Bar>();
+        float highestGrade = Float.parseFloat((gradeList.get(0))[1]);
+        for (String[] student : gradeList) {
+            float studentScore = Float.parseFloat(student[1]);
+            barArray.add(new Bar(highestGrade, studentScore, student[0]));
+        }
+        for (Bar bar : barArray) {
+            add(bar);
+        }
         
     }
     
@@ -48,8 +47,9 @@ public class LeaderboardPanel extends JPanel implements ComponentListener, Mouse
     public void mouseClicked(MouseEvent event) {
         int x = event.getX();
         int y = event.getY();
-        System.out.println("Clicked at: " + x
-                + " " + y + " On bar " + getComponentAt(x, y));
+        
+        Bar bar = (Bar)getComponentAt(x, y);
+        infoPanel.setLabels(bar.id, bar.score);
     }
     
     @Override

@@ -3,28 +3,23 @@ package edu.jsu.mcis.gamegogy;
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.geom.Rectangle2D;
 import javax.swing.*;
 
 class Bar extends JComponent implements ComponentListener {
     private Color barColor = Color.green;
-    private float width, height = 20,
+    public float width, height = 20,
             pointsPossible, score,
             x = 20, y = 0;
-    private int percentage;
+    public String id;
     
-    public Bar(int totalPointsPossible, int score) {
+    public Bar(float totalPointsPossible, float score, String studentID) {
+        this.id = studentID;
         pointsPossible = totalPointsPossible;
         this.score = score;
         calculateWidth(pointsPossible, score);
-        calculatePercentage(pointsPossible, score);
         addComponentListener(this);
         this.setPreferredSize(new Dimension(200,25));
-    }
-    private void calculatePercentage(float totalPointsPossible, float score) {
-        this.percentage = (int) (score / totalPointsPossible * 100);
     }
     
     public void calculateWidth(float pointsPossible, float points) {
@@ -40,9 +35,6 @@ class Bar extends JComponent implements ComponentListener {
         g2d.fillRect((int)x,(int)y,(int)this.width,(int)this.height);
         g2d.setColor(Color.BLACK);
         g2d.draw(new Rectangle2D.Double(x,y,this.width,this.height));
-        g2d.drawString(Integer.toString(percentage) + "%",
-                this.width + 30,
-                this.height - 5);
         g2d.drawString(Float.toString(score),
                 super.getWidth() - 40,
                 this.height - 5);

@@ -16,9 +16,11 @@ public class SelectionPanel extends JPanel implements ActionListener {
     public int selectedCourse = 0, selectedAssignment = 0;
     private Database database;
     private CourseGrades grades;
+    private GamegogyGUI gamegogyGUI;
     
-    public SelectionPanel(Course[] courseObjects, Database d) {
+    public SelectionPanel(Course[] courseObjects, Database d, GamegogyGUI gamegogyGUI) {
         this.database = d;
+        this.gamegogyGUI = gamegogyGUI;
         courseObjs = courseObjects;
         String[] courseAssignments = new String[1];
         courseIDs = new String[courseObjects.length];
@@ -69,7 +71,7 @@ public class SelectionPanel extends JPanel implements ActionListener {
         selectedAssignment = 0;
         assignmentBox.setSelectedItem(selectedAssignment);
         grades = database.getGrades(courseObjs[courseIndexSelected].getID());
-        GamegogyGUI.setSelectedAssignment(selectedAssignment, grades);
+        gamegogyGUI.setSelectedAssignment(selectedAssignment, grades);
         assignmentBox.removeAllItems();
         String[] assignments = grades.getAssignments();
         for (String assignment : assignments) {
@@ -104,7 +106,11 @@ public class SelectionPanel extends JPanel implements ActionListener {
             courseBoxUtilized();
         } 
         else if (activeComboBox.getName().equals("AssignmentBox")) {
-            GamegogyGUI.setSelectedAssignment(selectedAssignment, grades);
+            selectedAssignment = assignmentBox.getSelectedIndex();
+            if (selectedAssignment == -1) {
+                selectedAssignment = 0;
+            }
+            gamegogyGUI.setSelectedAssignment(selectedAssignment, grades);
         }
         
     }

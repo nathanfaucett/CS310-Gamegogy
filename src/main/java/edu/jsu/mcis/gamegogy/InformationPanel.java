@@ -7,8 +7,11 @@ import javax.swing.*;
 public class InformationPanel extends JPanel {
     private JLabel id, name, email, score,
             idLabel, nameLabel, emailLabel, scoreLabel;
+    private Database database;
     
-    public InformationPanel() {
+    public InformationPanel(Database db) {
+        this.database = db;
+        
         id = new JLabel();
         name = new JLabel();
         email = new JLabel();
@@ -38,6 +41,24 @@ public class InformationPanel extends JPanel {
     }
     
     public void refreshPanel(int assignmentIndexSelected, CourseGrades grades) {
-        
+        System.out.println(assignmentIndexSelected);
+        String[] assignments = grades.getAssignments();
+        String[] highestGrade = grades.getHighest(assignments[assignmentIndexSelected]);
+        Student currentStudent = database.getStudent(highestGrade[0]);
+        id.setText(currentStudent.getID());
+        name.setText(currentStudent.getFirstName() + " " 
+                + currentStudent.getLastName());
+        email.setText(currentStudent.getEmail() + "@jsu.edu");
+        score.setText(highestGrade[1]);
     }
+    
+    public void setLabels(String studentID, float grade){
+        Student currentStudent = database.getStudent(studentID);
+        id.setText(currentStudent.getID());
+        name.setText(currentStudent.getFirstName() + " " 
+                + currentStudent.getLastName());
+        email.setText(currentStudent.getEmail() + "@jsu.edu");
+        score.setText("" + grade);
+    }
+    
 }
