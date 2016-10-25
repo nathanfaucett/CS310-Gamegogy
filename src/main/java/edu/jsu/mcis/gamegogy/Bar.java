@@ -35,6 +35,8 @@ class Bar extends JComponent implements ComponentListener {
         g2d.fillRect((int)x,(int)y,(int)this.width,(int)this.height);
         g2d.setColor(Color.BLACK);
         g2d.draw(new Rectangle2D.Double(x,y,this.width,this.height));
+        g2d.setFont(new Font("SansSerif", Font.BOLD, 14));
+        System.out.println();
         g2d.drawString(Float.toString(score),
                 super.getWidth() - 40,
                 this.height - 5);

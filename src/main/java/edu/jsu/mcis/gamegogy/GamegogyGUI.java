@@ -45,12 +45,14 @@ public class GamegogyGUI extends JFrame{
         infoPanel.refreshPanel(assignmentIndexSelected, grades);
     }
 
-    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public static void main(String[] args) throws ClassNotFoundException,
+            InstantiationException, IllegalAccessException {
         try {
             MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
             UIManager.setLookAndFeel(new MetalLookAndFeel());
         } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(GamegogyGUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(
+                    GamegogyGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         GamegogyGUI frame = new GamegogyGUI();
         frame.setVisible(true);

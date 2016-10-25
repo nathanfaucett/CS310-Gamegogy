@@ -8,7 +8,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
 
-public class LeaderboardPanel extends JPanel implements ComponentListener, MouseListener{
+public class LeaderboardPanel extends JPanel 
+        implements ComponentListener, MouseListener{
     private ArrayList<Bar> barArray = new ArrayList();
     private InformationPanel infoPanel;
     

@@ -17,8 +17,8 @@ public class SelectionPanel extends JPanel implements ActionListener {
     private CourseGrades grades;
     private GamegogyGUI gamegogyGUI;
     
-    public SelectionPanel(Course[] courseObjects, Database d, GamegogyGUI gamegogyGUI) {
-        this.database = d;
+    public SelectionPanel(Course[] courseObjects, Database db, GamegogyGUI gamegogyGUI) {
+        this.database = db;
         this.gamegogyGUI = gamegogyGUI;
         courseObjs = courseObjects;
         String[] courseAssignments = new String[1];

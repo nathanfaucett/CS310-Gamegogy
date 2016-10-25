@@ -25,10 +25,10 @@ public class InformationPanel extends JPanel {
         add(score);
     }
     
-    public void refreshPanel(int assignmentIndexSelected, CourseGrades grades) {
-        System.out.println(assignmentIndexSelected);
+    public void refreshPanel(int assignmentIndex, CourseGrades grades) {
+        System.out.println(assignmentIndex);
         String[] assignments = grades.getAssignments();
-        String[] highestGrade = grades.getHighest(assignments[assignmentIndexSelected]);
+        String[] highestGrade = grades.getHighest(assignments[assignmentIndex]);
         Student currentStudent = database.getStudent(highestGrade[0]);
         id.setText("ID: " + currentStudent.getID());
         name.setText("Name: " + currentStudent.getFirstName() + " " 
