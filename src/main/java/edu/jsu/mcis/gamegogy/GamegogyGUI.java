@@ -1,23 +1,20 @@
 package edu.jsu.mcis.gamegogy;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import java.util.*;
 
 public class GamegogyGUI extends JFrame{
 
     
     private Database database;
     private Course[] courseObjs;
-    private static CourseGrades currentCourseGrades;
     private static SelectionPanel selectionPanel;
     private static LeaderboardPanel leaderboardPanel;
     private static InformationPanel infoPanel;
 
     public GamegogyGUI() {
         database = new Database();
-        Dimension dim = getPreferredSize();
+        setPreferredSize(new Dimension(400, 500));
         courseObjs = (Course[])database.getAllCourses();
         this.setTitle("Gamegogy");
         
@@ -29,8 +26,11 @@ public class GamegogyGUI extends JFrame{
         frameLayout.setVgap(10);
         this.setLayout(frameLayout);
         
+        JScrollPane scrollPane = new JScrollPane(leaderboardPanel);
+        scrollPane.setPreferredSize(new Dimension(400, 300));
+        
         this.add(selectionPanel, BorderLayout.NORTH);
-        this.add(leaderboardPanel, BorderLayout.CENTER);
+        add(scrollPane, BorderLayout.CENTER);
         this.add(infoPanel, BorderLayout.SOUTH);
     }
     

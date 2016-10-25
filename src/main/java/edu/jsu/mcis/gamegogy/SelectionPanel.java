@@ -3,11 +3,10 @@ package edu.jsu.mcis.gamegogy;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
 import javax.swing.*;
 
 public class SelectionPanel extends JPanel implements ActionListener {
-    private String[] courseAssignments, courseIDs;
+    private String[] courseIDs;
     private Course[] courseObjs;
     private JLabel courseTerm, courseEnrollment,
             courseTermLabel, courseEnrollmentLabel,

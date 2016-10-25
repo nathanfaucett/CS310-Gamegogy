@@ -1,11 +1,7 @@
 package edu.jsu.mcis.gamegogy;
 
-import com.sun.java.accessibility.util.AWTEventMonitor;
 import javax.swing.*;
-import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.MouseEvent;
@@ -18,7 +14,6 @@ public class LeaderboardPanel extends JPanel implements ComponentListener, Mouse
     
     public LeaderboardPanel(InformationPanel informationPanel) {
         this.infoPanel = informationPanel;
-        setPreferredSize(new Dimension( 400, 100));
         
         GridLayout grid = new GridLayout(0,1);
         this.setLayout(grid);
@@ -40,7 +35,6 @@ public class LeaderboardPanel extends JPanel implements ComponentListener, Mouse
         for (Bar bar : barArray) {
             add(bar);
         }
-        
     }
     
     @Override
