@@ -25,14 +25,17 @@ public class LeaderboardPanel extends JPanel
     
     public void refreshPanel(int assignmentIndexSelected, CourseGrades grades) {
         removeAll();
-        String[] assignments = grades.getAssignments();
-        List<String[]> gradeList = grades.getAll(assignments[assignmentIndexSelected]);
-        barArray = new ArrayList<Bar>();
+        //String[] assignments = grades.getAssignments();
+        List<String[]> gradeList = 
+                grades.getAll(grades.getAssignments()[assignmentIndexSelected]);
+        barArray = new ArrayList<>();
         float highestGrade = Float.parseFloat((gradeList.get(0))[1]);
-        for (String[] student : gradeList) {
-            float studentScore = Float.parseFloat(student[1]);
-            barArray.add(new Bar(highestGrade, studentScore, student[0]));
+        
+        for (String[] grade : gradeList) {
+            float studentScore = Float.parseFloat(grade[1]);
+            barArray.add(new Bar(highestGrade, studentScore, grade[0]));
         }
+        
         for (Bar bar : barArray) {
             add(bar);
         }

@@ -19,11 +19,11 @@ class Bar extends JComponent implements ComponentListener {
         this.score = score;
         calculateWidth(pointsPossible, score);
         addComponentListener(this);
-        this.setPreferredSize(new Dimension(200,25));
+        this.setPreferredSize(new Dimension(320,25));
     }
     
     public void calculateWidth(float pointsPossible, float points) {
-        this.width = (points / pointsPossible) * (this.getWidth() * .7f);
+        this.width = (points / pointsPossible) * (this.getWidth() * .8f);
     }
     
     @Override
