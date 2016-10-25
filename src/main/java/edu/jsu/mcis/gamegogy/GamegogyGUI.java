@@ -1,7 +1,12 @@
 package edu.jsu.mcis.gamegogy;
 
 import java.awt.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
+import javax.swing.plaf.metal.DefaultMetalTheme;
+import javax.swing.plaf.metal.MetalLookAndFeel;
+import javax.swing.plaf.metal.OceanTheme;
 
 public class GamegogyGUI extends JFrame{
 
@@ -40,7 +45,13 @@ public class GamegogyGUI extends JFrame{
         infoPanel.refreshPanel(assignmentIndexSelected, grades);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+        try {
+            MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+            UIManager.setLookAndFeel(new MetalLookAndFeel());
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(GamegogyGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
         GamegogyGUI frame = new GamegogyGUI();
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
