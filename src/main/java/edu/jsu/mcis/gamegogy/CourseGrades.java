@@ -77,17 +77,21 @@ public class CourseGrades {
             array = set.toArray(array);
             for(int i = 0; i < array.length; i++) {
                 if(highest == array[i].getValue()) {
-                    String[] old;
+                    String[] test = {array[i].getKey(),"" + highest};
+                    if(infoList.contains(test)) {}
+                    else {
+                        id = array[i].getKey();
+                    }
+                    
+                    
+                    /*String[] old;
                     if(infoList.size() > 0) {
                         old = infoList.get(infoList.size()-1);
                         if(old[0].equals(array[i].getKey())) {}
                         else {
                             id = array[i].getKey();
                         }
-                    }
-                    else {
-                        id = array[i].getKey();
-                    }
+                    }*/
                 }
             }
             String[] info = {id, "" + highest};
