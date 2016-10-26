@@ -106,12 +106,12 @@ public class DatabaseTest {
     @Test
     public void testGetRandomAssignmentFromFront() {
         CourseGrades courseGrades = database.getGrades("99000");
-        assertEquals("43", courseGrades.getGrades("111262", "Assignment 9"));
+        assertEquals("43.0", courseGrades.getGrades("111262", "Assignment 9"));
     }
     
     @Test
     public void testGetTotalFromMiddle() {
         CourseGrades courseGrades = database.getGrades("99017");
-        assertEquals("845", courseGrades.getGrades("111224", "Total"));
+        assertEquals("845.0", courseGrades.getGrades("111224", "Total"));
     }
 }

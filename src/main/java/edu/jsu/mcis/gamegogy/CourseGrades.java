@@ -76,7 +76,19 @@ public class CourseGrades {
             Map.Entry<String, Float>[] array = new Map.Entry[set.size()];
             array = set.toArray(array);
             for(int i = 0; i < array.length; i++) {
-                if(highest == array[i].getValue()) { id = array[i].getKey(); }
+                if(highest == array[i].getValue()) {
+                    String[] old;
+                    if(infoList.size() > 0) {
+                        old = infoList.get(infoList.size()-1);
+                        if(old[0].equals(array[i].getKey())) {}
+                        else {
+                            id = array[i].getKey();
+                        }
+                    }
+                    else {
+                        id = array[i].getKey();
+                    }
+                }
             }
             String[] info = {id, "" + highest};
             infoList.add(info);

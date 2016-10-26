@@ -18,21 +18,25 @@ public class CourseGradesTest {
     
     @Test
     public void testGetGradesForStudent() {
-        assertEquals("43", courseGrades.getGrades("111262", "Assignment 9"));
+        assertEquals("43.0", courseGrades.getGrades("111262", "Assignment 9"));
     }
     
     @Test
     public void testGetHighestGradeForAssignment() {
-        String[] data = {"111310", "66"};
+        String[] data = {"111310", "66.0"};
         assertEquals(data, courseGrades.getHighest("Assignment 9"));
     }
     
     @Test
     public void testGetAllGradesForAssignment() {
         List<String[]> data = courseGrades.getAll("Assignment 9");
-        String[] highest = {"111310", "66"};
+        String[] highest = {"111310", "66.0"};
         assertEquals(highest, data.get(0));
-        String[] fourthHighest = {"111335", "49"};
+        String[] secondHighest = {"111318", "58.0"};
+        assertEquals(secondHighest, data.get(1));
+        String[] thirdHighest = {"111383", "58.0"};
+        assertEquals(thirdHighest, data.get(2));
+        String[] fourthHighest = {"111335", "49.0"};
         assertEquals(fourthHighest, data.get(3));
     }
     
