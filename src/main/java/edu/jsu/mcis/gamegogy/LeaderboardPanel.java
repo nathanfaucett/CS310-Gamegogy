@@ -10,7 +10,7 @@ import java.util.*;
 
 public class LeaderboardPanel extends JPanel 
         implements ComponentListener, MouseListener{
-    private ArrayList<Bar> barArray = new ArrayList();
+    public ArrayList<Bar> barArray = new ArrayList();
     private InformationPanel infoPanel;
     
     public LeaderboardPanel(InformationPanel informationPanel) {

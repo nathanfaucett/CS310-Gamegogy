@@ -6,7 +6,7 @@ import au.com.bytecode.opencsv.*;
 //import org.json.simple.*;
 //import org.json.simple.parser.*;
 
-public class CSV {
+public final class CSV {
     
     public static List<String[]> fileReader(File file) {
         CSVParser parser = new CSVParser();

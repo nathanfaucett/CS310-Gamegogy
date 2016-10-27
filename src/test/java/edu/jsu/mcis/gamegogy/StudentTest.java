@@ -32,4 +32,15 @@ public class StudentTest {
 	public void testEmailSetCorrectly() {
 		assertEquals("jshields", student.getEmail());
 	}
+        
+    @Test
+    public void testToString() {
+        assertEquals("[111111] Jerrod Shields jshields@jsu.edu", student.toString());
+    }
+    
+    @Test
+    public void testConstructor() {
+        Student s = new Student("111111","Jerrod","Shields","jshields");
+        assertEquals("[111111] Jerrod Shields jshields@jsu.edu", s.toString());
+    }
 }

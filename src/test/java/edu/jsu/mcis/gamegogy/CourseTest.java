@@ -32,4 +32,15 @@ public class CourseTest {
 	public void testEnrolledSetCorrectly() {
 		assertEquals("11", course.getEnrolled());
 	}
+        
+    @Test
+    public void testToString() {
+        assertEquals("[99000] Spring 2013 (11 students)", course.toString());
+    }
+    
+    @Test
+    public void testConstructor() {
+        Course c = new Course("99000","Spring","2013","11");
+        assertEquals("[99000] Spring 2013 (11 students)", c.toString());
+    }
 }

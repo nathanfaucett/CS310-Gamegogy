@@ -6,7 +6,7 @@ import java.awt.event.ComponentListener;
 import java.awt.geom.Rectangle2D;
 import javax.swing.*;
 
-class Bar extends JComponent implements ComponentListener {
+public class Bar extends JComponent implements ComponentListener {
     private Color barColor = Color.green;
     public float width, height = 20,
             pointsPossible, score,

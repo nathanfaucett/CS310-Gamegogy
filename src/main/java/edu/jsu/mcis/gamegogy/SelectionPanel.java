@@ -35,9 +35,13 @@ public class SelectionPanel extends JPanel implements ActionListener {
         
         courseBoxLabel = new JLabel();
         assignmentBoxLabel = new JLabel();
+        
         courseTerm = new JLabel();
+        courseTerm.setName("courseTerm");
         courseTermLabel = new JLabel();
+        
         courseEnrollment = new JLabel();
+        courseEnrollment.setName("courseEnrollment");
         courseEnrollmentLabel = new JLabel();
 
         courseBox.setSelectedIndex(0);

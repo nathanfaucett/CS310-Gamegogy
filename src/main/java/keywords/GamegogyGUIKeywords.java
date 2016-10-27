@@ -19,8 +19,24 @@ public class GamegogyGUIKeywords {
     @RobotKeyword("Clicks the leaderboard bar given by index.\n")
     @ArgumentNames({"index"})
     public void clickLeaderboardBarAtIndex(int index) {
-        
+        ContainerOperator context = (ContainerOperator) Context.getContext();
+        ComponentChooser chooser = new CustomPanelChooser();
+        JComponentOperator operator = new JComponentOperator(context, chooser);
+        LeaderboardPanel panel = (LeaderboardPanel)operator.getSource();
+        Bar b = (Bar)panel.barArray.get(index);
+        int componentX = b.getX();
+        int componentY = b.getY();
+        operator.clickMouse(componentX, componentY, 1);
     }
 
+    class CustomPanelChooser implements ComponentChooser {
+        public CustomPanelChooser() {}
+        public boolean checkComponent(Component comp) {
+            return (comp instanceof LeaderboardPanel);
+        }
+        public String getDescription() {
+            return "Leaderboard Panel";
+        }
+    }
     
 }

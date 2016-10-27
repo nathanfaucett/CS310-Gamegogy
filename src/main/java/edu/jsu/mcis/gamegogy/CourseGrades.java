@@ -83,7 +83,6 @@ public class CourseGrades {
                         id = array[i].getKey();
                     }
                     
-                    
                     /*String[] old;
                     if(infoList.size() > 0) {
                         old = infoList.get(infoList.size()-1);

@@ -11,9 +11,13 @@ public class InformationPanel extends JPanel {
         this.database = db;
         
         id = new JLabel();
+        id.setName("studentId");
         name = new JLabel();
+        name.setName("studentName");
         email = new JLabel();
+        email.setName("studentEmail");
         score = new JLabel();
+        score.setName("studentScore");
         
         GridLayout grid = new GridLayout(0,1);
         grid.setHgap(20);
