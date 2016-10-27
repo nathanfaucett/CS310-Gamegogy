@@ -70,35 +70,21 @@ public class CourseGrades {
         List<Float> list = new ArrayList<>(coll);
         Collections.sort(list);
         
+        Set<Map.Entry<String, Float>> set = assignmentInfo.entrySet();
+        List<Map.Entry<String, Float>> mapList = new ArrayList<>(set);
+        
         while(list.size() >= 1) {
             highest = list.remove(list.size()-1);
-            Set<Map.Entry<String, Float>> set = assignmentInfo.entrySet();
-            Map.Entry<String, Float>[] array = new Map.Entry[set.size()];
-            array = set.toArray(array);
-            for(int i = 0; i < array.length; i++) {
-                if(highest == array[i].getValue()) {
-                    String[] old;
-                    if(infoList.size() > 0) {
-                        for(int j = 0; j < infoList.size(); j++) {
-                            old = infoList.get(j);
-                            if(old[1].equals(""+highest)) {
-                                if(old[0].equals(array[i].getKey())) {}
-                                else {
-                                    id = array[i].getKey();
-                                }
-                            }
-                            else if(j == infoList.size()-1) {
-                                id = array[i].getKey();
-                            }
-                        }
-                    }
-                    else {
-                        id = array[i].getKey();
-                    }
+            int index = 0;
+            for(int i = 0; i < mapList.size(); i++) {
+                if(highest == mapList.get(i).getValue()) {
+                    index = i;
                 }
             }
-            String[] info = {id, "" + highest};
+            Map.Entry<String, Float> ME = mapList.get(index);
+            String[] info = {ME.getKey(), "" + highest};
             infoList.add(info);
+            mapList.remove(index);
         }
         
         
