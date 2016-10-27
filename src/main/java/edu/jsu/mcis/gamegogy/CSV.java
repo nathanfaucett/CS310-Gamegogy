@@ -3,10 +3,8 @@ package edu.jsu.mcis.gamegogy;
 import java.io.*;
 import java.util.*;
 import au.com.bytecode.opencsv.*;
-//import org.json.simple.*;
-//import org.json.simple.parser.*;
 
-public final class CSV {
+public class CSV {
     
     public static List<String[]> fileReader(File file) {
         CSVParser parser = new CSVParser();

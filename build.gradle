@@ -27,7 +27,7 @@ task uberjar(type: Jar) {
     with jar
 }
 
-mainClassName = "edu.jsu.mcis.gamegogy.GamegogyGUI"
+mainClassName = "edu.jsu.mcis.gamegogy.GUI.GamegogyGUI"
 sourceCompatibility = 1.7
 version = "0.0.1"
 
@@ -35,7 +35,7 @@ jar {
     manifest {
         attributes "Implementation-Title": "Gamegogy",
                    "Implementation-Version": version,
-                   "Main-Class": "edu.jsu.mcis.gamegogy.GamegogyGUI"
+                   "Main-Class": "edu.jsu.mcis.gamegogy.GUI.GamegogyGUI"
     }
 }
 
@@ -54,9 +54,20 @@ dependencies {
 }
 
 jacocoTestReport {
-    group = "Reporting"
-    description = "Generate Jacoco coverage reports after running tests."
-    additionalSourceDirs = files(sourceSets.main.allJava.srcDirs)
+    reports {
+        html {
+            enabled true
+        }
+    }
+
+    afterEvaluate {
+        classDirectories = files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                    '**/*keywords**',
+                    '**/*GUI**'
+            ])
+        })
+    }
 }
 
 runrobot.dependsOn build

@@ -1,5 +1,7 @@
 package keywords;
 
+import edu.jsu.mcis.gamegogy.GUI.Bar;
+import edu.jsu.mcis.gamegogy.GUI.LeaderboardPanel;
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.RobotKeywords;
 import org.robotframework.javalib.annotation.ArgumentNames;

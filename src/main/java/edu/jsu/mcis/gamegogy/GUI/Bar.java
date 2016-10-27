@@ -1,4 +1,4 @@
-package edu.jsu.mcis.gamegogy;
+package edu.jsu.mcis.gamegogy.GUI;
 
 import java.awt.*;
 import java.awt.event.ComponentEvent;

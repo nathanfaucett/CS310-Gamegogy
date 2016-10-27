@@ -1,5 +1,8 @@
-package edu.jsu.mcis.gamegogy;
+package edu.jsu.mcis.gamegogy.GUI;
 
+import edu.jsu.mcis.gamegogy.CourseGrades;
+import edu.jsu.mcis.gamegogy.Database;
+import edu.jsu.mcis.gamegogy.Student;
 import java.awt.*;
 import javax.swing.*;
 

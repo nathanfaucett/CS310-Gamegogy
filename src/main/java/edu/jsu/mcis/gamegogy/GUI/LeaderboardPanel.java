@@ -1,5 +1,6 @@
-package edu.jsu.mcis.gamegogy;
+package edu.jsu.mcis.gamegogy.GUI;
 
+import edu.jsu.mcis.gamegogy.CourseGrades;
 import javax.swing.*;
 import java.awt.GridLayout;
 import java.awt.event.ComponentEvent;

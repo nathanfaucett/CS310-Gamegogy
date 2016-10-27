@@ -4,7 +4,7 @@ Acceptance Tests
 | Library   | SwingLibrary              |
 
 | *Test Case*                      | *Action*                          | *Argument*                       | *Argument*          |
-| Test Gamegogy Default Values     | Start Application                 | edu.jsu.mcis.gamegogy.GamegogyGUI |                     |
+| Test Gamegogy Default Values     | Start Application                 | edu.jsu.mcis.gamegogy.GUI.GamegogyGUI |                     |
 |                                  | Select Window                     | Gamegogy                         |                     |
 |                                  | ${courseId}=                      | Get Selected Item From Combo Box | CourseBox      |
 |                                  | Should Be Equal                   | 99000                            | ${courseId}         |
@@ -17,7 +17,7 @@ Acceptance Tests
 |                                  | Label Text Should Be              | studentEmail                     | Email: cguzman@jsu.edu     |
 |                                  | Label Text Should Be              | studentScore                     | Score: 925.0               |
 |                                  | Close Window                      | Gamegogy                         |                     |
-| Test Gamegogy Course Select      | Start Application                 | edu.jsu.mcis.gamegogy.GamegogyGUI |                     |
+| Test Gamegogy Course Select      | Start Application                 | edu.jsu.mcis.gamegogy.GUI.GamegogyGUI |                     |
 |                                  | Select Window                     | Gamegogy                         |                     |
 |                                  | Select From Combo Box             | CourseBox                   | 7                   |
 |                                  | ${columnName}=                    | Get Selected Item From Combo Box | AssignmentBox      |
@@ -29,7 +29,7 @@ Acceptance Tests
 |                                  | Label Text Should Be              | studentEmail                     | Email: mharrington@jsu.edu |
 |                                  | Label Text Should Be              | studentScore                     | Score: 803.0               |
 |                                  | Close Window                      | Gamegogy                         |                     |
-| Test Gamegogy Column Select      | Start Application                 | edu.jsu.mcis.gamegogy.GamegogyGUI |                     |
+| Test Gamegogy Column Select      | Start Application                 | edu.jsu.mcis.gamegogy.GUI.GamegogyGUI |                     |
 |                                  | Select Window                     | Gamegogy                         |                     |
 |                                  | Select From Combo Box             | CourseBox                   | 9                   |
 |                                  | Select From Combo Box             | AssignmentBox                   | Assignment 7        |
