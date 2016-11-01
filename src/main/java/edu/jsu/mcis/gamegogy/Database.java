@@ -14,27 +14,24 @@ public class Database {
         students = new HashMap<String, Student>();
         courseGrades = new HashMap<String, CourseGrades>();
         
-        List<String[]> studentList = CSV.fileReader(new File("src/main/java/resources/students.csv"));
-        List<String[]> courseList = CSV.fileReader(new File("src/main/java/resources/courses.csv"));
+        Resource resource = new Resource("CSV");
+        
+        List<String[]> studentList = resource.getStudentInfo();
+        List<String[]> courseList = resource.getCourseInfo();
         
         String[] info;
         
-        for(int i = 1; i < studentList.size(); i++) {
+        for(int i = 0; i < studentList.size(); i++) {
             info = studentList.get(i);
             students.put(info[0], new Student(info));
         }
         
-        for(int i = 1; i < courseList.size(); i++) {
+        for(int i = 0; i < courseList.size(); i++) {
             info = courseList.get(i);
             courses.put(info[0], new Course(info));
-            List<String[]> gradesList = CSV.fileReader(new File("src/main/java/resources/courses/" + info[0] + ".csv"));
+            List<String[]> gradesList = resource.getGradeInfo(i);
             courseGrades.put(info[0], new CourseGrades(gradesList));
         }
-    }
-    
-    public int[] returnMapSize() {
-        int[] array = {students.size(), courses.size()};
-        return array;
     }
     
     public Student getStudent(String id) {

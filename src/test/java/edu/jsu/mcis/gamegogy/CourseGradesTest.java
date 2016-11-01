@@ -12,7 +12,8 @@ public class CourseGradesTest {
     
     @Before
     public void setUp() {
-        List<String[]> info = CSV.fileReader(new File("src/main/java/resources/courses/99000.csv"));;
+        Resource resource = new Resource("CSV");
+        List<String[]> info = resource.getGradeInfo(0);
 		courseGrades = new CourseGrades(info);
     }
     

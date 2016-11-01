@@ -9,18 +9,16 @@ public class CourseGrades {
     
     public CourseGrades(List<String[]> list) {
         assignments = new HashMap<String, Map<String, Float>>();
-        String[] array = list.get(0);
-        header = new String[array.length-1];
+        header = list.get(0);
         String[] info;
-        for(int i = 1; i < array.length; i++) {
+        for(int i = 0; i < header.length; i++) {
             Map<String, Float> studentInfo = new HashMap<String, Float>();
             for(int j = 1; j < list.size(); j++) {
                 info = list.get(j);
                 String studentId = info[0];
-                studentInfo.put(studentId, Float.parseFloat(info[i]));
+                studentInfo.put(studentId, Float.parseFloat(info[i+1]));
             }
-            header[i-1] = array[i];
-            assignments.put(array[i],studentInfo);
+            assignments.put(header[i],studentInfo);
         }
         
     }
