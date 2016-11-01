@@ -1,6 +1,7 @@
 package edu.jsu.mcis.gamegogy.GUI;
 
 import edu.jsu.mcis.gamegogy.CourseGrades;
+import java.awt.Color;
 import javax.swing.*;
 import java.awt.GridLayout;
 import java.awt.event.ComponentEvent;
@@ -13,6 +14,7 @@ public class LeaderboardPanel extends JPanel
         implements ComponentListener, MouseListener{
     public ArrayList<Bar> barArray = new ArrayList();
     private InformationPanel infoPanel;
+    private Bar currentBar;
     
     public LeaderboardPanel(InformationPanel informationPanel) {
         this.infoPanel = informationPanel;
@@ -37,6 +39,9 @@ public class LeaderboardPanel extends JPanel
             barArray.add(new Bar(highestGrade, studentScore, grade[0]));
         }
         
+        barArray.get(0).barColor = Color.blue;
+        currentBar = barArray.get(0);
+        
         for (Bar bar : barArray) {
             add(bar);
         }
@@ -47,7 +52,15 @@ public class LeaderboardPanel extends JPanel
         int x = event.getX();
         int y = event.getY();
         
+        if (currentBar != null) {
+            currentBar.barColor = Color.GREEN;
+            currentBar.repaint();
+        }
+        
         Bar bar = (Bar)getComponentAt(x, y);
+        currentBar = bar;
+        currentBar.barColor = Color.BLUE;
+        currentBar.repaint();
         infoPanel.setLabels(bar.id, bar.score);
     }
     
