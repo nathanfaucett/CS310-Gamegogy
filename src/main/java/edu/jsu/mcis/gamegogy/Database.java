@@ -14,7 +14,7 @@ public class Database {
         students = new HashMap<String, Student>();
         courseGrades = new HashMap<String, CourseGrades>();
         
-        Resource resource = new Resource("CSV");
+        Resource resource = new CSVResource();
         
         List<String[]> studentList = resource.getStudentInfo();
         List<String[]> courseList = resource.getCourseInfo();

@@ -12,7 +12,7 @@ public class CourseGradesTest {
     
     @Before
     public void setUp() {
-        Resource resource = new Resource("CSV");
+        Resource resource = new CSVResource();
         List<String[]> info = resource.getGradeInfo(0);
 		courseGrades = new CourseGrades(info);
     }

@@ -6,6 +6,7 @@ import au.com.bytecode.opencsv.*;
 
 public class CSV {
     
+    //reconfigure to run on strings instead of files
     public static List<String[]> fileReader(File file) {
         CSVParser parser = new CSVParser();
         List<String[]> record = new ArrayList<>();
@@ -27,5 +28,19 @@ public class CSV {
         }
         return record;
     }
+    
+    
+    /*
+        ClassLoader loader = ClassLoader.getSystemClassLoader();
+        StringBuffer csvContents = new StringBuffer();
+        try(BufferedReader reader = new BufferedReader(new InputStreamReader(loader.getResourceAsStream("grades.csv")))) {
+            String line;
+            while((line = reader.readLine()) != null) {
+                csvContents.append(line + '\n');
+            }
+        }
+        catch(IOException e) { e.printStackTrace(); }
+        String testCsv = csvContents.toString();
+    */
     
 }

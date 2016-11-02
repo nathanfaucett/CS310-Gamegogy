@@ -6,16 +6,15 @@ import org.json.*;
 
 public class JSON {
     
-    public static List<String[]> converter(String string) {
-        List<String[]> record = new ArrayList<>();
-        return record;
-    }
-    
+    //JSONArray makeArray(String big)
+    //String[] readStudent(String id)
+    //String[] readCourse(String id)
+    //List<String[]> readGrade(String id)
 }
 /*
 {
-    "id":"99000","term":"Spring","year":"2013","size":11,"grades":
-        {
+    "id":"99000","term":"Spring","year":"2013","size":11,
+    "grades":{
             "colHeaders":["Total","Assignment 1","Assignment 2","Assignment 3","Assignment 4","Assignment 5","Assignment 6","Assignment 7","Assignment 8","Assignment 9","Exam 1"],
             "rowHeaders":["111318","111383","111190","111406","111115","111211","111208","111310","111335","111141","111262"],
             "data":[[925.0,65.0,58.0,52.0,60.0,66.0,66.0,59.0,57.0,58.0,384.0],
