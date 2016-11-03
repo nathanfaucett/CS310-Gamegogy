@@ -19,27 +19,15 @@ public class JSONResource implements Resource {
     private void load() {
         loadStudents();
         loadCourses();
-        normalize();
     }
     
     private void loadStudents() {
-        /* *move to JSONWebservice*
-        String studentList = Connection.createConnection("studentlist");
-        JSONArray ids = JSON.makeArray(studentList)
-        for(String id : ids) {
-            JSONString student = Connection.createConnection("student/" + id);
-            String[] array = JSON.getStudent(student);
-            studentInfo.add(array);
-        }
-        */
+        studentInfo = JSONWebservice.getStudent();
     }
     
     private void loadCourses() {
-        
-    }
-    
-    private void normalize() {
-        
+        courseInfo = JSONWebservice.getCourse();
+        gradeInfo = JSONWebservice.getGrades();
     }
     
     public List<String[]> getStudentInfo() { return studentInfo; }
