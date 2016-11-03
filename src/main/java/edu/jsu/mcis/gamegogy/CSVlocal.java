@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 import au.com.bytecode.opencsv.*;
 
-public class CSV {
+public class CSVlocal {
     
     //reconfigure to run on strings instead of files
     public static List<String[]> fileReader(File file) {

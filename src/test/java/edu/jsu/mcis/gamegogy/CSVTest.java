@@ -11,7 +11,7 @@ public class CSVTest {
         
     @Test
     public void testListIsMade() {
-    List<String[]> list = CSV.fileReader(new File("src/main/java/resources/courses.csv"));
+    List<String[]> list = CSVlocal.fileReader(new File("src/main/java/resources/courses.csv"));
     String[] arrayToCheckAgainst = {"99000","Spring","2013","11"};
     String[] arrayFromList = list.get(1);
     assertArrayEquals(arrayToCheckAgainst, arrayFromList);
@@ -19,7 +19,7 @@ public class CSVTest {
         
     @Test
 	public void testListIsNotMade() {
-        List<String[]> list = CSV.fileReader(new File("src/main/java/resources/BLEEEPP.csv"));
+        List<String[]> list = CSVlocal.fileReader(new File("src/main/java/resources/BLEEEPP.csv"));
         assertTrue(list.isEmpty());
 	}
 }
