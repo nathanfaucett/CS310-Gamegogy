@@ -4,7 +4,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 
-public class DatabaseTest {
+public class CSVDatabaseTest {
     private Database database;
     
     @Before
