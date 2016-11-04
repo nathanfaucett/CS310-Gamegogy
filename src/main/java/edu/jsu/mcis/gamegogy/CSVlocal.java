@@ -7,12 +7,12 @@ import au.com.bytecode.opencsv.*;
 public class CSVlocal {
     
     //reconfigure to run on strings instead of files
-    public static List<String[]> fileReader(File file) {
+    public static List<String[]> fileReader(String fileName) {
         CSVParser parser = new CSVParser();
         List<String[]> record = new ArrayList<>();
         
         try {
-            BufferedReader bufReader = new BufferedReader(new FileReader(file));
+            BufferedReader bufReader = findFile(fileName);
             String line;
 
             while ((line = bufReader.readLine()) != null ) {
@@ -23,24 +23,18 @@ public class CSVlocal {
             
             return record;
             
-        } catch(IOException ex) {
+        } catch(Exception ex) {
             ex.printStackTrace();
         }
         return record;
     }
     
     
-    /*
+    private static BufferedReader findFile(String fileName) throws Exception {
         ClassLoader loader = ClassLoader.getSystemClassLoader();
         StringBuffer csvContents = new StringBuffer();
-        try(BufferedReader reader = new BufferedReader(new InputStreamReader(loader.getResourceAsStream("grades.csv")))) {
-            String line;
-            while((line = reader.readLine()) != null) {
-                csvContents.append(line + '\n');
-            }
-        }
-        catch(IOException e) { e.printStackTrace(); }
-        String testCsv = csvContents.toString();
-    */
-    
+        InputStream stream = loader.getResourceAsStream(fileName);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+        return reader;
+    }
 }

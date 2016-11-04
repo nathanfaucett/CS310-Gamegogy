@@ -23,14 +23,14 @@ public class CSVResource implements Resource {
     }
     
     private void loadStudents() { //need to un hard code later
-        studentInfo = CSVlocal.fileReader(new File("src/main/java/resources/students.csv"));
+        studentInfo = CSVlocal.fileReader("students.csv");
     }
     
     private void loadCourses() {
-        courseInfo = CSVlocal.fileReader(new File("src/main/java/resources/courses.csv"));
+        courseInfo = CSVlocal.fileReader("courses.csv");
         for(int i = 1; i < courseInfo.size(); i++) {
             String[] info = courseInfo.get(i);
-            List<String[]> list = CSVlocal.fileReader(new File("src/main/java/resources/courses/" + info[0] + ".csv"));
+            List<String[]> list = CSVlocal.fileReader("courses/" + info[0] + ".csv");
             gradeInfo.add(list);
         }
     }

@@ -5,11 +5,11 @@ import static org.junit.Assert.*;
 
 
 public class DatabaseTest {
-    Database database;
+    private Database database;
     
     @Before
     public void setUp() {
-        database = new Database();
+        database = new Database(new CSVResource());
     }
     
     @Test

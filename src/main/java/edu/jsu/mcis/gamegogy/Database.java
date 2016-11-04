@@ -8,17 +8,25 @@ public class Database {
     private Map<String, Student> students;
     private Map<String, CourseGrades> courseGrades;
     
-    
     public Database() {
+        this(new CSVResource());
+    }
+    
+    public Database(Resource resource) {
         courses = new HashMap<String, Course>();
         students = new HashMap<String, Student>();
         courseGrades = new HashMap<String, CourseGrades>();
         
-        Resource resource = new CSVResource();
-        Resource jResource = new JSONResource();
+        load(resource);
+    }
+    
+    public void load(Resource resource) {
+        students.clear();
+        courses.clear();
+        courseGrades.clear();
         
-        List<String[]> studentList = jResource.getStudentInfo();
-        List<String[]> courseList = jResource.getCourseInfo();
+        List<String[]> studentList = resource.getStudentInfo();
+        List<String[]> courseList = resource.getCourseInfo();
         
         String[] info;
         
@@ -30,7 +38,7 @@ public class Database {
         for(int i = 0; i < courseList.size(); i++) {
             info = courseList.get(i);
             courses.put(info[0], new Course(info));
-            List<String[]> gradesList = jResource.getGradeInfo(i);
+            List<String[]> gradesList = resource.getGradeInfo(i);
             courseGrades.put(info[0], new CourseGrades(gradesList));
         }
     }
