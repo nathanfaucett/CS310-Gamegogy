@@ -13,12 +13,14 @@ public class SelectionPanel extends JPanel implements ActionListener {
     private Course[] courseObjs;
     private JLabel courseTerm, courseEnrollment,
             courseTermLabel, courseEnrollmentLabel,
-            courseBoxLabel, assignmentBoxLabel;
+            courseBoxLabel, assignmentBoxLabel,
+            csvSwitchLabel, jsonSwitchLabel;
     private JComboBox courseBox, assignmentBox;
     public int selectedCourse = 0, selectedAssignment = 0;
     private Database database;
     private CourseGrades grades;
     private GamegogyGUI gamegogyGUI;
+    private JRadioButton csvSwitch, jsonSwitch;
     
     public SelectionPanel(Course[] courseObjects, Database db, GamegogyGUI gamegogyGUI) {
         this.database = db;
@@ -30,6 +32,14 @@ public class SelectionPanel extends JPanel implements ActionListener {
         for(int i = 0; i < courseObjects.length; i++) {
             courseIDs[i] = courseObjects[i].getID();
         }
+        
+        ButtonGroup databaseSwitchGroup = new ButtonGroup();
+        csvSwitchLabel = new JLabel("Resource File: ");
+        csvSwitch = new JRadioButton();
+        jsonSwitchLabel = new JLabel("Web Service:");
+        jsonSwitch = new JRadioButton();
+        databaseSwitchGroup.add(csvSwitch);
+        databaseSwitchGroup.add(jsonSwitch);
         
         courseBox = new JComboBox(courseIDs);
         courseBox.setName("CourseBox");
@@ -46,7 +56,7 @@ public class SelectionPanel extends JPanel implements ActionListener {
         courseEnrollment = new JLabel();
         courseEnrollment.setName("courseEnrollment");
         courseEnrollmentLabel = new JLabel();
-
+        
         courseBox.setSelectedIndex(0);
         assignmentBox.setSelectedIndex(0);
         courseBoxLabel.setText("Course ");
@@ -60,6 +70,11 @@ public class SelectionPanel extends JPanel implements ActionListener {
         GridLayout grid = new GridLayout(0,4);
         grid.setHgap(20);
         this.setLayout(grid);
+        
+        add(csvSwitchLabel);
+        add(csvSwitch);
+        add(jsonSwitchLabel);
+        add(jsonSwitch);
         
         add(courseBoxLabel);
         add(courseBox);
@@ -118,6 +133,5 @@ public class SelectionPanel extends JPanel implements ActionListener {
             }
             gamegogyGUI.setSelectedAssignment(selectedAssignment, grades);
         }
-        
     }
 }
