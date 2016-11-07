@@ -18,9 +18,9 @@ public class GamegogyGUI extends JFrame{
     private static LeaderboardPanel leaderboardPanel;
     private static InformationPanel infoPanel;
 
-    public GamegogyGUI() {
-        database = new Database();
-        setPreferredSize(new Dimension(400, 500));
+    public GamegogyGUI(Resource resource) {
+        database = new Database(resource);
+        setPreferredSize(new Dimension(500, 500));
         courseObjs = (Course[])database.getAllCourses();
         this.setTitle("Gamegogy");
         
@@ -48,6 +48,8 @@ public class GamegogyGUI extends JFrame{
 
     public static void main(String[] args) throws ClassNotFoundException,
             InstantiationException, IllegalAccessException {
+        
+        Resource resource;
         try {
             MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
             UIManager.setLookAndFeel(new MetalLookAndFeel());
@@ -55,9 +57,21 @@ public class GamegogyGUI extends JFrame{
             Logger.getLogger(
                     GamegogyGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        GamegogyGUI frame = new GamegogyGUI();
+        
+        if (args.length == 1) {
+            if ( (args[0].isEmpty() != true) && (args[0].charAt(args[0].length() - 1) != '/') ) {
+                args[0] += '/';
+            }
+            Connection.setBaseURL(args[0]);
+            resource = new JSONResource();
+        } else {
+            resource = new CSVResource();
+        }
+        
+        GamegogyGUI frame = new GamegogyGUI(new CSVResource());//resource);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         frame.pack();
+        
     }
 }

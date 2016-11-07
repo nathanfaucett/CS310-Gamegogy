@@ -33,7 +33,6 @@ public class InformationPanel extends JPanel {
     }
     
     public void refreshPanel(int assignmentIndex, CourseGrades grades) {
-        System.out.println(assignmentIndex);
         String[] assignments = grades.getAssignments();
         String[] highestGrade = grades.getHighest(assignments[assignmentIndex]);
         Student currentStudent = database.getStudent(highestGrade[0]);

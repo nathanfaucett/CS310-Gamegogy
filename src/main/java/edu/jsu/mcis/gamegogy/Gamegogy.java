@@ -1,7 +1,11 @@
 package edu.jsu.mcis.gamegogy;
 
 public class Gamegogy {
-    private Database d = new Database();
+    private Database d;
+    public Gamegogy() {
+        d = new Database(new CSVResource());
+    }
+    
 
     public Object findByID(String type, String id) {
         if (type.equals("student")) {
