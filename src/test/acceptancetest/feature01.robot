@@ -1,6 +1,6 @@
 | *Setting* | *Value*                   |
 | Library   | keywords.GamegogyKeywords |
-    
+
 | *Variable*         | *Value*                                 |
 | ${f01stu_expected} | [111128] Maritza Abbott mabbott@jsu.edu |
 | ${f01crs_expected} | [99018] Spring 2014 (16 students)       |
