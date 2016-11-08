@@ -1,15 +1,19 @@
 package keywords;
 
-import edu.jsu.mcis.gamegogy.GUI.Bar;
-import edu.jsu.mcis.gamegogy.GUI.LeaderboardPanel;
+import edu.jsu.mcis.gamegogy.GUI.*;
+
+import org.netbeans.jemmy.operators.JComponentOperator;
+import org.netbeans.jemmy.ComponentChooser;
+import java.awt.Component;
+import javax.swing.JRadioButton;
+
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.swing.context.Context;
 
-import org.netbeans.jemmy.operators.JComponentOperator;
+import org.netbeans.jemmy.operators.JRadioButtonMenuItemOperator;
 import org.netbeans.jemmy.operators.ContainerOperator;
-import org.netbeans.jemmy.ComponentChooser;
-import java.awt.Component;
+import javax.swing.JRadioButtonMenuItem;
 
 public class GamegogyGUIKeywords {
 
@@ -26,8 +30,13 @@ public class GamegogyGUIKeywords {
         operator.clickMouse(componentX, componentY, 1);
     }
     
-    public void radioButtonMenuItemIsSelected(String lastItem) {
-        
+    @RobotKeyword("Returns whether the given radio button menu item is selected.\n")
+    @ArgumentNames({"menuItemText"})
+    public boolean radioButtonMenuItemIsSelected(String menuItemText) {
+        ContainerOperator context = (ContainerOperator)Context.getContext();
+        JRadioButtonMenuItemOperator operator = new JRadioButtonMenuItemOperator(context, menuItemText);
+        JRadioButtonMenuItem item = (JRadioButtonMenuItem)operator.getSource();
+        return item.isSelected();
     }
 
     class CustomPanelChooser implements ComponentChooser {
@@ -39,5 +48,5 @@ public class GamegogyGUIKeywords {
             return "Leaderboard Panel";
         }
     }
-    
+
 }

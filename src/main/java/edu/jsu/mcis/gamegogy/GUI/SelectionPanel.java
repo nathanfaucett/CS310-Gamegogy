@@ -1,10 +1,8 @@
 package edu.jsu.mcis.gamegogy.GUI;
 
-import edu.jsu.mcis.gamegogy.CSVResource;
 import edu.jsu.mcis.gamegogy.Course;
 import edu.jsu.mcis.gamegogy.CourseGrades;
 import edu.jsu.mcis.gamegogy.Database;
-import edu.jsu.mcis.gamegogy.JSONResource;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,14 +13,12 @@ public class SelectionPanel extends JPanel implements ActionListener {
     private Course[] courseObjects;
     private JLabel courseTerm, courseEnrollment,
             courseTermLabel, courseEnrollmentLabel,
-            courseBoxLabel, assignmentBoxLabel,
-            csvSwitchLabel, jsonSwitchLabel;
+            courseBoxLabel, assignmentBoxLabel;
     private JComboBox courseBox, assignmentBox;
     public int selectedCourse = 0, selectedAssignment = 0;
     private Database database;
     private CourseGrades grades;
     private GamegogyGUI gamegogyGUI;
-    private JRadioButton csvSwitch, jsonSwitch;
     
     public SelectionPanel(Database db, 
             GamegogyGUI gamegogyGUI, boolean defaultToCSV) {
@@ -37,26 +33,6 @@ public class SelectionPanel extends JPanel implements ActionListener {
         }
         
         String[] courseAssignments = new String[1];
-        
-        ButtonGroup databaseSwitchGroup = new ButtonGroup();
-        csvSwitchLabel = new JLabel("Resource File: ");
-        csvSwitch = new JRadioButton();
-        csvSwitch.setName("CSV");
-        jsonSwitchLabel = new JLabel("Web Service:");
-        jsonSwitch = new JRadioButton();
-        jsonSwitch.setName("JSON");
-        
-        if (defaultToCSV) {
-            csvSwitch.setSelected(true);
-        } else {
-            jsonSwitch.setSelected(true);
-        }
-        
-        csvSwitch.addActionListener(this);
-        jsonSwitch.addActionListener(this);
-        
-        databaseSwitchGroup.add(csvSwitch);
-        databaseSwitchGroup.add(jsonSwitch);
         
         courseBox = new JComboBox(courseIDs);
         courseBox.setName("CourseBox");
@@ -90,11 +66,6 @@ public class SelectionPanel extends JPanel implements ActionListener {
         grid.setHgap(20);
         this.setLayout(grid);
         
-        add(csvSwitchLabel);
-        add(csvSwitch);
-        add(jsonSwitchLabel);
-        add(jsonSwitch);
-        
         add(courseBoxLabel);
         add(courseBox);
         add(assignmentBoxLabel);
@@ -119,7 +90,7 @@ public class SelectionPanel extends JPanel implements ActionListener {
         }
     }
 
-    private void refreshLabels(int courseIndexSelected) {
+    public void refreshLabels(int courseIndexSelected) {
         courseTerm.setText(
             courseObjects[courseIndexSelected].getSemester() 
             + " " + courseObjects[courseIndexSelected].getYear()
@@ -132,7 +103,7 @@ public class SelectionPanel extends JPanel implements ActionListener {
         selectedCourse = courseIndexSelected;
     }
     
-    private void courseBoxUtilized() {
+    public void courseBoxUtilized() {
         int courseIndexSelected = courseBox.getSelectedIndex();
         if (courseIndexSelected == -1) {
             courseIndexSelected = 0;
@@ -155,21 +126,10 @@ public class SelectionPanel extends JPanel implements ActionListener {
                 }
                 gamegogyGUI.setSelectedAssignment(selectedAssignment, grades);
             }
-        } else{
-            JRadioButton activeRadioButton = (JRadioButton) event.getSource();
-            if (activeRadioButton.getName().equals("CSV")) {
-                this.database.load(new CSVResource());
-                courseBoxUtilized();
-                refreshCourses();
-            } else {
-                this.database.load(new JSONResource());
-                courseBoxUtilized();
-                refreshCourses();
-            }
         }
     }
         
-    private void refreshCourses() {
+    public void refreshCourses() {
         courseObjects = (Course[])database.getAllCourses();
         
         courseIDs = new String[courseObjects.length];

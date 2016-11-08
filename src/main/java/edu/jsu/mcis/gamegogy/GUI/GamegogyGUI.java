@@ -17,16 +17,23 @@ public class GamegogyGUI extends JFrame{
     private static SelectionPanel selectionPanel;
     private static LeaderboardPanel leaderboardPanel;
     private static InformationPanel infoPanel;
+    private static JMenuBar menuBar;
+    private static JMenu sourceMenu;
 
     public GamegogyGUI(Resource resource) {
         database = new Database(resource);
         setPreferredSize(new Dimension(500, 500));
         this.setTitle("Gamegogy");
         
+        menuBar = new JMenuBar();
         infoPanel = new InformationPanel(database);
         leaderboardPanel = new LeaderboardPanel(infoPanel);
         selectionPanel = new SelectionPanel(database, this, 
                 resource instanceof CSVResource);
+        sourceMenu = new SourceMenu(resource instanceof CSVResource, 
+                database, selectionPanel);
+                
+        menuBar.add(sourceMenu);
         
         BorderLayout frameLayout = new BorderLayout();
         frameLayout.setVgap(10);
@@ -35,9 +42,11 @@ public class GamegogyGUI extends JFrame{
         JScrollPane scrollPane = new JScrollPane(leaderboardPanel);
         scrollPane.setPreferredSize(new Dimension(400, 300));
         
+        this.setJMenuBar(menuBar);
         this.add(selectionPanel, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
         this.add(infoPanel, BorderLayout.SOUTH);
+        
     }
     
     public void setSelectedAssignment(int assignmentIndexSelected,
