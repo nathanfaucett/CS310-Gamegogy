@@ -58,7 +58,7 @@ public class GamegogyGUI extends JFrame{
                     GamegogyGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        if (args.length == 1) {
+        if (args.length > 1) {
             if ( (args[0].isEmpty() != true) && (args[0].charAt(args[0].length() - 1) != '/') ) {
                 args[0] += '/';
             }
