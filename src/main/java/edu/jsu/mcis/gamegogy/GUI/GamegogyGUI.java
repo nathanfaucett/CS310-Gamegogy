@@ -21,12 +21,12 @@ public class GamegogyGUI extends JFrame{
     public GamegogyGUI(Resource resource) {
         database = new Database(resource);
         setPreferredSize(new Dimension(500, 500));
-        courseObjs = (Course[])database.getAllCourses();
         this.setTitle("Gamegogy");
         
         infoPanel = new InformationPanel(database);
         leaderboardPanel = new LeaderboardPanel(infoPanel);
-        selectionPanel = new SelectionPanel(courseObjs, database, this);
+        selectionPanel = new SelectionPanel(database, this, 
+                resource instanceof CSVResource);
         
         BorderLayout frameLayout = new BorderLayout();
         frameLayout.setVgap(10);
@@ -67,8 +67,8 @@ public class GamegogyGUI extends JFrame{
         } else {
             resource = new CSVResource();
         }
-        
-        GamegogyGUI frame = new GamegogyGUI(new CSVResource());//resource);
+        System.out.println(resource instanceof CSVResource);
+        GamegogyGUI frame = new GamegogyGUI(resource);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         frame.pack();

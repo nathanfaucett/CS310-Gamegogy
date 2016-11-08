@@ -25,6 +25,10 @@ public class GamegogyGUIKeywords {
         int componentY = b.getY();
         operator.clickMouse(componentX, componentY, 1);
     }
+    
+    public void radioButtonMenuItemIsSelected(String lastItem) {
+        
+    }
 
     class CustomPanelChooser implements ComponentChooser {
         public CustomPanelChooser() {}
