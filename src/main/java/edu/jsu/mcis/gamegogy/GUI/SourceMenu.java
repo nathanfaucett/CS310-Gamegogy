@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class SourceMenu extends JMenu implements ActionListener{
-    private JRadioButtonMenuItem csvSwitch, jsonSwitch;
+    private JMenuItem csvSwitch, jsonSwitch;
     private Database database;
     private SelectionPanel selectionPanel;
     
@@ -16,14 +16,15 @@ public class SourceMenu extends JMenu implements ActionListener{
             SelectionPanel sp){
         this.database = db;
         this.selectionPanel = sp;
+        this.setName("Source");
         this.setText("Source");
         
-        csvSwitch = new JRadioButtonMenuItem();
-        csvSwitch.setText("Resource File");
-        csvSwitch.setName("CSV");
-        jsonSwitch = new JRadioButtonMenuItem();
-        jsonSwitch.setText("Web Service");
-        jsonSwitch.setName("JSON");
+        csvSwitch = new JMenuItem();
+        csvSwitch.setText("ResourceFile");
+        csvSwitch.setName("ResourceFile");
+        jsonSwitch = new JMenuItem();
+        jsonSwitch.setText("WebService");
+        jsonSwitch.setName("WebService");
         
         if (defaultToCSV) {
             csvSwitch.setSelected(true);
@@ -44,14 +45,23 @@ public class SourceMenu extends JMenu implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent event) {
-        JRadioButtonMenuItem activeRadioButton = (JRadioButtonMenuItem) event.getSource();
-        if (activeRadioButton.getName().equals("CSV")) {
-            this.database.load(new CSVResource());
-            //these functions should probably be moved outside of SelectionPanel
+        JMenuItem activeRadioButton = (JMenuItem) event.getSource();
+        
+        System.out.println(activeRadioButton.getName());
+        
+        if (activeRadioButton.getName().equals("WebService")) {
+            csvSwitch.setSelected(false);
+            jsonSwitch.setSelected(true);
+        
+            this.database.load(new JSONResource());
             selectionPanel.courseBoxUtilized();
             selectionPanel.refreshCourses();
-        } else {
-            this.database.load(new JSONResource());
+        } else if (activeRadioButton.getName().equals("ResourceFile")) {
+            csvSwitch.setSelected(true);
+            jsonSwitch.setSelected(false);
+        
+            this.database.load(new CSVResource());
+            //these functions should probably be moved outside of SelectionPanel
             selectionPanel.courseBoxUtilized();
             selectionPanel.refreshCourses();
         }

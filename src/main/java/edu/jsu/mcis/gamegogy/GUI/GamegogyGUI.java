@@ -76,7 +76,6 @@ public class GamegogyGUI extends JFrame{
         } else {
             resource = new CSVResource();
         }
-        System.out.println(resource instanceof CSVResource);
         GamegogyGUI frame = new GamegogyGUI(resource);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 

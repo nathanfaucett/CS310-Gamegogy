@@ -14,7 +14,7 @@ public class SelectionPanel extends JPanel implements ActionListener {
     private JLabel courseTerm, courseEnrollment,
             courseTermLabel, courseEnrollmentLabel,
             courseBoxLabel, assignmentBoxLabel;
-    private JComboBox courseBox, assignmentBox;
+    public JComboBox courseBox, assignmentBox;
     public int selectedCourse = 0, selectedAssignment = 0;
     private Database database;
     private CourseGrades grades;
@@ -105,7 +105,7 @@ public class SelectionPanel extends JPanel implements ActionListener {
     
     public void courseBoxUtilized() {
         int courseIndexSelected = courseBox.getSelectedIndex();
-        if (courseIndexSelected == -1) {
+        if (courseIndexSelected < 0) {
             courseIndexSelected = 0;
         }
         refreshLabels(courseIndexSelected);
@@ -118,7 +118,7 @@ public class SelectionPanel extends JPanel implements ActionListener {
             JComboBox activeComboBox = (JComboBox) event.getSource();
             if (activeComboBox.getName().equals("CourseBox")) {
                 courseBoxUtilized();
-            } 
+            }
             else if (activeComboBox.getName().equals("AssignmentBox")) {
                 selectedAssignment = assignmentBox.getSelectedIndex();
                 if (selectedAssignment == -1) {
@@ -138,11 +138,12 @@ public class SelectionPanel extends JPanel implements ActionListener {
             courseIDs[i] = courseObjects[i].getID();
         }
         
-        selectedCourse = 0;
-        courseBox.setSelectedItem(selectedCourse);
         courseBox.removeAllItems();
         for (String course : courseIDs) {
             courseBox.addItem(course);
         }
+        
+        selectedCourse = 0;
+        courseBox.setSelectedItem(0);
     }
 }

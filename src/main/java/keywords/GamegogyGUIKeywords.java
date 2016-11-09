@@ -5,15 +5,14 @@ import edu.jsu.mcis.gamegogy.GUI.*;
 import org.netbeans.jemmy.operators.JComponentOperator;
 import org.netbeans.jemmy.ComponentChooser;
 import java.awt.Component;
-import javax.swing.JRadioButton;
 
 import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.swing.context.Context;
 
-import org.netbeans.jemmy.operators.JRadioButtonMenuItemOperator;
+import org.netbeans.jemmy.operators.JMenuItemOperator;
 import org.netbeans.jemmy.operators.ContainerOperator;
-import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JMenuItem;
 
 public class GamegogyGUIKeywords {
 
@@ -34,8 +33,8 @@ public class GamegogyGUIKeywords {
     @ArgumentNames({"menuItemText"})
     public boolean radioButtonMenuItemIsSelected(String menuItemText) {
         ContainerOperator context = (ContainerOperator)Context.getContext();
-        JRadioButtonMenuItemOperator operator = new JRadioButtonMenuItemOperator(context, menuItemText);
-        JRadioButtonMenuItem item = (JRadioButtonMenuItem)operator.getSource();
+        JMenuItemOperator operator = new JMenuItemOperator(context, menuItemText);
+        JMenuItem item = (JMenuItem)operator.getSource();
         return item.isSelected();
     }
 
