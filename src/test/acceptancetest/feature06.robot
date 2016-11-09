@@ -1,5 +1,6 @@
 Acceptance Tests
 
+
 | *Setting* | *Value*                   |
 | Library   | SwingLibrary              |
 | Library   | String                    |
@@ -8,7 +9,7 @@ Acceptance Tests
 
 | *Keyword*                        | *Action*           | *Argument*                         | *Argument*  |          |
 | Is Menu Item Selected            | [Arguments]        | ${menuText}                        |             |          |
-|                                  | @{menus}=          | Split String                       | ${menuText} |  \|       |
+|                                  | @{menus}=          | Split String                       | ${menuText} | \|       |
 |                                  | ${lastItem}=       | Remove From List                   | ${menus}    | -1       |
 |                                  | :FOR               | ${menu}                            | IN          | @{menus} |
 |                                  |                    | Select From Menu                   | ${menu}     |          |
@@ -25,8 +26,8 @@ Acceptance Tests
 | *Test Case*                      | *Action*                         | *Argument*                       | *Argument*       |
 | Test Default File Source         | Start Application                | edu.jsu.mcis.gamegogy.GUI.GamegogyGUI   |                  |
 |                                  | Select Window                    | Gamegogy                         |                  |
-|                                  | Menu Item Should Be Selected     | Source|ResourceFile                    |                  |
-|                                  | Menu Item Should Not Be Selected | WebService                      |                  |
+|                                  | Menu Item Should Be Selected     | Source|Resource File             |                  |
+|                                  | Menu Item Should Not Be Selected | Web Service                      |                  |
 |                                  | Close Window                     | Gamegogy                         |                  |
 | Test Web Service Source          | Start Application                | edu.jsu.mcis.gamegogy.GUI.GamegogyGUI   |                  |
 |                                  | Select Window                    | Gamegogy                         |                  |
@@ -42,9 +43,9 @@ Acceptance Tests
 |                                  | Label Text Should Be             | studentName                      | Name: Vance McClain    |
 |                                  | Label Text Should Be             | studentEmail                     | Email: vmcclain@jsu.edu |
 |                                  | Label Text Should Be             | studentScore                     | Score: 59.0             |
-|                                  | Select From Menu                 | Source|WebService               |                  |
-|                                  | Menu Item Should Not Be Selected | Source|ResourceFile             |                  |
-|                                  | Menu Item Should Be Selected     | WebService                      |                  |
+|                                  | Select From Menu                 | Source|Web Service               |                  |
+|                                  | Menu Item Should Not Be Selected | Source|Resource File             |                  |
+|                                  | Menu Item Should Be Selected     | Web Service                      |                  |
 |                                  | ${courseId}=                     | Get Selected Item From Combo Box | CourseBox   |
 |                                  | Should Be Equal                  | 99000                            | ${courseId}      |
 |                                  | ${columnName}=                   | Get Selected Item From Combo Box | AssignmentBox   |
@@ -52,7 +53,7 @@ Acceptance Tests
 |                                  | Close Window                     | Gamegogy                         |                  |
 | Test Reselected File Source      | Start Application                | edu.jsu.mcis.gamegogy.GUI.GamegogyGUI   |                  |
 |                                  | Select Window                    | Gamegogy                         |                  |
-|                                  | Select From Menu                 | WebService               |                  |
+|                                  | Select From Menu                 | Source|Web Service               |                  |
 |                                  | ${courseId}=                     | Get Selected Item From Combo Box | CourseBox   |
 |                                  | Should Be Equal                  | 99000                            | ${courseId}      |
 |                                  | ${columnName}=                   | Get Selected Item From Combo Box | AssignmentBox   |
@@ -65,9 +66,9 @@ Acceptance Tests
 |                                  | Label Text Should Be             | studentName                      | Name: Vance McClain    |
 |                                  | Label Text Should Be             | studentEmail                     | Email: vmcclain@jsu.edu |
 |                                  | Label Text Should Be             | studentScore                     | Score: 59.0             |
-|                                  | Select From Menu                 | Source|ResourceFile             |                  |
-|                                  | Menu Item Should Be Selected     | Source|ResourceFile             |                  |
-|                                  | Menu Item Should Not Be Selected | WebService                      |                  |
+|                                  | Select From Menu                 | Source|Resource File             |                  |
+|                                  | Menu Item Should Be Selected     | Source|Resource File             |                  |
+|                                  | Menu Item Should Not Be Selected | Web Service                      |                  |
 |                                  | ${courseId}=                     | Get Selected Item From Combo Box | CourseBox   |
 |                                  | Should Be Equal                  | 99000                            | ${courseId}      |
 |                                  | ${columnName}=                   | Get Selected Item From Combo Box | AssignmentBox   |

@@ -7,6 +7,7 @@ buildscript {
     dependencies {
         classpath files(mkdir('build/classes/main'))
         classpath files(mkdir('build/resources/main'))
+        classpath 'org.json:json:20160810'
         classpath "gradle.plugin.org.roboscratch.gradle:gradle-robot:0.1.1"
         classpath 'org.robotframework:swinglibrary:1.9.6'
         classpath 'org.robotframework:javalib-core:1.2.1'

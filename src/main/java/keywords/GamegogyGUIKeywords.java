@@ -10,9 +10,9 @@ import org.robotframework.javalib.annotation.RobotKeyword;
 import org.robotframework.javalib.annotation.ArgumentNames;
 import org.robotframework.swing.context.Context;
 
-import org.netbeans.jemmy.operators.JMenuItemOperator;
+import org.netbeans.jemmy.operators.JRadioButtonMenuItemOperator;
 import org.netbeans.jemmy.operators.ContainerOperator;
-import javax.swing.JMenuItem;
+import javax.swing.JRadioButtonMenuItem;
 
 public class GamegogyGUIKeywords {
 
@@ -28,13 +28,13 @@ public class GamegogyGUIKeywords {
         int componentY = b.getY();
         operator.clickMouse(componentX, componentY, 1);
     }
-    
+
     @RobotKeyword("Returns whether the given radio button menu item is selected.\n")
     @ArgumentNames({"menuItemText"})
     public boolean radioButtonMenuItemIsSelected(String menuItemText) {
         ContainerOperator context = (ContainerOperator)Context.getContext();
-        JMenuItemOperator operator = new JMenuItemOperator(context, menuItemText);
-        JMenuItem item = (JMenuItem)operator.getSource();
+        JRadioButtonMenuItemOperator operator = new JRadioButtonMenuItemOperator(context, menuItemText);
+        JRadioButtonMenuItem item = (JRadioButtonMenuItem)operator.getSource();
         return item.isSelected();
     }
 
