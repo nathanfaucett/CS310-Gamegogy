@@ -12,7 +12,7 @@ import javax.swing.plaf.metal.MetalLookAndFeel;
 
 public class GamegogyGUI extends JFrame{
 
-    
+
     private Database database;
     private Course[] courseObjs;
     private static SelectionPanel selectionPanel;
@@ -24,36 +24,36 @@ public class GamegogyGUI extends JFrame{
     public GamegogyGUI() {
         this(new CSVResource());
     }
-    
+
     public GamegogyGUI(Resource resource) {
         database = new Database(resource);
         setPreferredSize(new Dimension(500, 500));
         this.setTitle("Gamegogy");
-        
+
         menuBar = new JMenuBar();
         infoPanel = new InformationPanel(database);
         leaderboardPanel = new LeaderboardPanel(infoPanel);
-        selectionPanel = new SelectionPanel(database, this, 
+        selectionPanel = new SelectionPanel(database, this,
                 resource instanceof CSVResource);
-        sourceMenu = new SourceMenu(resource instanceof CSVResource, 
+        sourceMenu = new SourceMenu(resource instanceof CSVResource,
                 database, selectionPanel);
-                
+
         menuBar.add(sourceMenu);
-        
+
         BorderLayout frameLayout = new BorderLayout();
         frameLayout.setVgap(10);
         this.setLayout(frameLayout);
-        
+
         JScrollPane scrollPane = new JScrollPane(leaderboardPanel);
         scrollPane.setPreferredSize(new Dimension(400, 300));
-        
+
         this.setJMenuBar(menuBar);
         this.add(selectionPanel, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
         this.add(infoPanel, BorderLayout.SOUTH);
-        
+
     }
-    
+
     public void setSelectedAssignment(int assignmentIndexSelected,
             CourseGrades grades) {
         leaderboardPanel.refreshPanel(assignmentIndexSelected, grades);
@@ -62,9 +62,9 @@ public class GamegogyGUI extends JFrame{
 
     public static void main(String[] args) throws ClassNotFoundException,
             InstantiationException, IllegalAccessException {
-        
-        SpringApplication.start();
-        
+
+        SpringWebService.start();
+
         Resource resource;
         try {
             MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
@@ -73,7 +73,7 @@ public class GamegogyGUI extends JFrame{
             Logger.getLogger(
                     GamegogyGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         if (args.length > 1) {
             if ( (args[0].isEmpty() != true) && (args[0].charAt(args[0].length() - 1) != '/') ) {
                 args[0] += '/';
@@ -85,7 +85,7 @@ public class GamegogyGUI extends JFrame{
         }
         GamegogyGUI frame = new GamegogyGUI(resource);
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
     }
 }
