@@ -9,6 +9,10 @@ import javax.swing.*;
 import javax.swing.plaf.metal.DefaultMetalTheme;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
 public class GamegogyGUI extends JFrame{
 
     
@@ -20,6 +24,10 @@ public class GamegogyGUI extends JFrame{
     private static JMenuBar menuBar;
     private static JMenu sourceMenu;
 
+    public GamegogyGUI() {
+        this(new CSVResource());
+    }
+    
     public GamegogyGUI(Resource resource) {
         database = new Database(resource);
         setPreferredSize(new Dimension(500, 500));
@@ -81,5 +89,6 @@ public class GamegogyGUI extends JFrame{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         frame.pack();
         
+        SpringApplication.run(GamegogyGUI.class, args);
     }
 }

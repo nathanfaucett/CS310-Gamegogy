@@ -3,6 +3,7 @@ buildscript {
       maven {
         url "https://plugins.gradle.org/m2/"
       }
+      mavenCentral()
     }
     dependencies {
         classpath files(mkdir('build/classes/main'))
@@ -12,6 +13,9 @@ buildscript {
         classpath 'org.robotframework:swinglibrary:1.9.6'
         classpath 'org.robotframework:javalib-core:1.2.1'
         classpath 'net.sf.opencsv:opencsv:2.3'
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE"
+        classpath "org.springframework.boot:spring-boot-starter-web:1.4.2.RELEASE"
+        classpath 'org.springframework.boot:spring-boot-starter-tomcat:1.4.1.RELEASE'
     }
 }
 plugins {
@@ -21,6 +25,7 @@ plugins {
 apply plugin: "java"
 apply plugin: "application"
 apply plugin: "jacoco"
+apply plugin: 'spring-boot'
 
 task uberjar(type: Jar) {
     manifest.from jar.manifest
@@ -73,8 +78,11 @@ dependencies {
   compile 'org.json:json:20160810'
   compile 'org.robotframework:swinglibrary:1.9.6'
   compile 'org.robotframework:javalib-core:1.2.1'
+  compile "org.springframework.boot:spring-boot-starter-web"
+  compile 'org.springframework.boot:spring-boot-starter-tomcat'
 
   testCompile group: "junit", name: "junit", version: "4.+"
+  testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
 
 gradle.projectsEvaluated {
