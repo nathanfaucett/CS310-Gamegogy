@@ -5,8 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class SpringWebservice {
-
-    public static void main(String[] args) {
-        SpringApplication.run(SpringWebservice.class, args);
+    public static void start() {
+        SpringApplication.run(SpringWebservice.class, new String[0]);
     }
 }

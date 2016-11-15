@@ -9,10 +9,7 @@ import javax.swing.*;
 import javax.swing.plaf.metal.DefaultMetalTheme;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
 public class GamegogyGUI extends JFrame{
 
     
@@ -66,6 +63,8 @@ public class GamegogyGUI extends JFrame{
     public static void main(String[] args) throws ClassNotFoundException,
             InstantiationException, IllegalAccessException {
         
+        SpringApplication.start();
+        
         Resource resource;
         try {
             MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
@@ -88,7 +87,5 @@ public class GamegogyGUI extends JFrame{
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         frame.pack();
-        
-        SpringApplication.run(GamegogyGUI.class, args);
     }
 }
