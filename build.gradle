@@ -14,18 +14,24 @@ buildscript {
       classpath 'org.robotframework:javalib-core:1.2.1'
 
       classpath 'net.sf.opencsv:opencsv:2.3'
-
-      classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE")
+      
+      classpath "org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE"
+      
+      classpath("org.springframework.boot:spring-boot-starter-web:1.4.2.RELEASE")
+      classpath 'org.springframework.boot:spring-boot-starter-test:1.4.2.RELEASE'
+      classpath 'com.jayway.jsonpath:json-path:2.2.0'
     }
 }
 plugins {
   id "org.roboscratch.robot" version "0.1.1"
+  id "org.springframework.boot" version "1.4.2.RELEASE"
 }
 
 apply plugin: "java"
 apply plugin: "application"
 apply plugin: "jacoco"
-apply plugin: 'spring-boot'
+apply plugin: "org.springframework.boot"
+
 
 task uberjar(type: Jar) {
     manifest.from jar.manifest
@@ -41,10 +47,17 @@ task uberjar(type: Jar) {
 }
 
 mainClassName = "edu.jsu.mcis.gamegogy.GUI.GamegogyGUI"
-sourceCompatibility = 1.7
 version = "0.0.1"
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+bootRepackage {
+    mainClass = 'edu.jsu.mcis.gamegogy.GUI.GamegogyGUI'
+}
 
 jar {
+    baseName = 'GamegogyGUI'
+    version =  '0.0.1'
     manifest {
         attributes "Implementation-Title": "Gamegogy",
                    "Implementation-Version": version,
@@ -78,17 +91,17 @@ dependencies {
   compile 'org.json:json:20160810'
   compile 'org.robotframework:swinglibrary:1.9.6'
   compile 'org.robotframework:javalib-core:1.2.1'
-
-  compile "org.springframework.boot:spring-boot-starter-web"
+  
+  compile("org.springframework.boot:spring-boot-starter-web:1.4.2.RELEASE")
+  compile 'org.springframework.boot:spring-boot-starter-test:1.4.2.RELEASE'
+  compile 'com.jayway.jsonpath:json-path:2.2.0'
 
   testCompile group: "junit", name: "junit", version: "4.+"
-  testCompile 'org.springframework.boot:spring-boot-starter-test'
-  testCompile 'com.jayway.jsonpath:json-path'
 }
 
 gradle.projectsEvaluated {
     tasks.withType(JavaCompile) {
-        options.compilerArgs << "-Xlint:deprecation"
+        options.compilerArgs << "-Xlint:deprecation" << "-Xlint:unchecked"
     }
 }
 
