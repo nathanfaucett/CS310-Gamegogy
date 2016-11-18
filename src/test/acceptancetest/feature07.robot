@@ -1,7 +1,10 @@
-Acceptance Tests
+ Acceptance Tests
 
 | *Setting* | *Value*         |
-| Library   | RequestsLibrary |
+| Library   | SwingLibrary              |
+| Library   | String                    |
+| Library   | Collections               |
+| Library   | keywords.GamegogyGUIKeywords |
 
 | *Keyword*                        | *Action*           | *Argument*                         | *Argument*  |          |
 | Is Menu Item Selected            | [Arguments]        | ${menuText}                        |             |          |
@@ -20,12 +23,12 @@ Acceptance Tests
 
 
 | *Test Case*                      | *Action*                         | *Argument*                       | *Argument*       |
-| Test Default File Source         | Start Application                | edu.jsu.mcis.gamegogy.GUI.GamegogyGUI   |                  |
+| Test Default File Source         | Start Application                | edu.jsu.mcis.gamegogy.gui.GamegogyGUI   |                  |
 |                                  | Select Window                    | Gamegogy                         |                  |
 |                                  | Menu Item Should Be Selected     | Source|Resource File             |                  |
 |                                  | Menu Item Should Not Be Selected | Web Service                      |                  |
 |                                  | Close Window                     | Gamegogy                         |                  |
-| Test Web Service Source          | Start Application                | edu.jsu.mcis.gamegogy.GUI.GamegogyGUI   |                  |
+| Test Web Service Source          | Start Application                | edu.jsu.mcis.gamegogy.gui.GamegogyGUI   |                  |
 |                                  | Select Window                    | Gamegogy                         |                  |
 |                                  | ${courseId}=                     | Get Selected Item From Combo Box | courseComboBox   |
 |                                  | Should Be Equal                  | 99000                            | ${courseId}      |
@@ -47,7 +50,7 @@ Acceptance Tests
 |                                  | ${columnName}=                   | Get Selected Item From Combo Box | columnComboBox   |
 |                                  | Should Be Equal                  | Total                            | ${columnName}    |
 |                                  | Close Window                     | Gamegogy                         |                  |
-| Test Reselected File Source      | Start Application                | edu.jsu.mcis.gamegogy.GUI.GamegogyGUI   |                  |
+| Test Reselected File Source      | Start Application                | edu.jsu.mcis.gamegogy.gui.GamegogyGUI   |                  |
 |                                  | Select Window                    | Gamegogy                         |                  |
 |                                  | Select From Menu                 | Source|Web Service               |                  |
 |                                  | ${courseId}=                     | Get Selected Item From Combo Box | courseComboBox   |

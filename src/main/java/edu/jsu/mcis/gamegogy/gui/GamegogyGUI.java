@@ -1,7 +1,7 @@
-package edu.jsu.mcis.gamegogy.GUI;
+package edu.jsu.mcis.gamegogy.gui;
 
 import edu.jsu.mcis.gamegogy.*;
-import edu.jsu.mcis.gamegogy.GUI.*;
+import edu.jsu.mcis.gamegogy.gui.*;
 import java.awt.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;

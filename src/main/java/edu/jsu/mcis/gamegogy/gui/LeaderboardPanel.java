@@ -1,4 +1,4 @@
-package edu.jsu.mcis.gamegogy.GUI;
+package edu.jsu.mcis.gamegogy.gui;
 
 import edu.jsu.mcis.gamegogy.CourseGrades;
 import java.awt.Color;

@@ -1,4 +1,4 @@
-package edu.jsu.mcis.gamegogy.GUI;
+package edu.jsu.mcis.gamegogy.gui;
 
 import edu.jsu.mcis.gamegogy.CSVResource;
 import edu.jsu.mcis.gamegogy.Database;

@@ -19,7 +19,7 @@ public class WebServiceController {
         }
 		return ids;
     }
-    
+
     @RequestMapping("/courselist")
     public String[] courselist() {
         Course[] array = database.getAllCourses();
@@ -29,22 +29,22 @@ public class WebServiceController {
         }
 		return ids;
     }
-    
+
     @RequestMapping("/student/{id}")
     public Student getstudent(@PathVariable(value = "id") String id) {
         return database.getStudent(id);
     }
-    
+
     @RequestMapping("/course/{id}")
     public CourseJSON getcourse(@PathVariable(value = "id") String id) {
         return new CourseJSON(database.getCourse(id), database.getGrades(id));
     }
-    
+
     public class CourseJSON {
         private String id, term, year;
         private int size;
         private GradesJSON grades;
-        
+
         public CourseJSON(Course course, CourseGrades g) {
             id = course.getID();
             term = course.getSemester();
@@ -52,18 +52,18 @@ public class WebServiceController {
             size = Integer.parseInt(course.getEnrolled());
             grades = new GradesJSON(g);
         }
-        
+
         public String getID() { return id; }
         public String getTerm() { return term; }
         public String getYear() { return year; }
         public int getSize() { return size; }
         public GradesJSON getGrades() { return grades; }
     }
-    
+
     public class GradesJSON {
         private String[] colHeaders, rowHeaders;
         private float[][] data;
-        
+
         public GradesJSON(CourseGrades g) {
             colHeaders = g.getAssignments();
             List<String[]> list = g.getAll(colHeaders[0]);
@@ -78,7 +78,7 @@ public class WebServiceController {
                 }
             }
         }
-        
+
         public String[] getColHeaders() { return colHeaders; }
         public String[] getRowHeaders() { return rowHeaders; }
         public float[][] getData() { return data; }

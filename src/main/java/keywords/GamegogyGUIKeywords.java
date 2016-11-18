@@ -1,6 +1,6 @@
 package keywords;
 
-import edu.jsu.mcis.gamegogy.GUI.*;
+import edu.jsu.mcis.gamegogy.gui.*;
 
 import org.netbeans.jemmy.operators.JComponentOperator;
 import org.netbeans.jemmy.ComponentChooser;
