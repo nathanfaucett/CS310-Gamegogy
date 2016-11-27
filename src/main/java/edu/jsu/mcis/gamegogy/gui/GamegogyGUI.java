@@ -62,9 +62,6 @@ public class GamegogyGUI extends JFrame{
 
     public static void main(String[] args) throws ClassNotFoundException,
             InstantiationException, IllegalAccessException {
-
-        SpringWebService.start();
-
         Resource resource;
         try {
             MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());

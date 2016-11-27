@@ -1,10 +1,14 @@
-package edu.jsu.mcis.gamegogy;
+package edu.jsu.mcis.webservice;
+
 
 import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
+
+import edu.jsu.mcis.gamegogy.*;
+
 
 @RestController
 public class WebServiceController {

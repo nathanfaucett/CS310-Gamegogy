@@ -30,12 +30,12 @@
 |                                  | Close Window                     | Gamegogy                         |                  |
 | Test Web Service Source          | Start Application                | edu.jsu.mcis.gamegogy.gui.GamegogyGUI   |                  |
 |                                  | Select Window                    | Gamegogy                         |                  |
-|                                  | ${courseId}=                     | Get Selected Item From Combo Box | courseComboBox   |
+|                                  | ${courseId}=                     | Get Selected Item From Combo Box | CourseBox   |
 |                                  | Should Be Equal                  | 99000                            | ${courseId}      |
-|                                  | ${columnName}=                   | Get Selected Item From Combo Box | columnComboBox   |
+|                                  | ${columnName}=                   | Get Selected Item From Combo Box | AssignmentBox   |
 |                                  | Should Be Equal                  | Total                            | ${columnName}    |
-|                                  | Select From Combo Box            | courseComboBox                   | 9                |
-|                                  | Select From Combo Box            | columnComboBox                   | Assignment 7     |
+|                                  | Select From Combo Box            | CourseBox                   | 9                |
+|                                  | Select From Combo Box            | AssignmentBox                   | Assignment 7     |
 |                                  | Label Text Should Be             | courseTerm                       | Spring 2012      |
 |                                  | Label Text Should Be             | courseEnrollment                 | 25               |
 |                                  | Label Text Should Be             | studentId                        | ID: 111122           |
@@ -45,20 +45,20 @@
 |                                  | Select From Menu                 | Source|Web Service               |                  |
 |                                  | Menu Item Should Not Be Selected | Source|Resource File             |                  |
 |                                  | Menu Item Should Be Selected     | Web Service                      |                  |
-|                                  | ${courseId}=                     | Get Selected Item From Combo Box | courseComboBox   |
+|                                  | ${courseId}=                     | Get Selected Item From Combo Box | CourseBox   |
 |                                  | Should Be Equal                  | 99000                            | ${courseId}      |
-|                                  | ${columnName}=                   | Get Selected Item From Combo Box | columnComboBox   |
+|                                  | ${columnName}=                   | Get Selected Item From Combo Box | AssignmentBox   |
 |                                  | Should Be Equal                  | Total                            | ${columnName}    |
 |                                  | Close Window                     | Gamegogy                         |                  |
 | Test Reselected File Source      | Start Application                | edu.jsu.mcis.gamegogy.gui.GamegogyGUI   |                  |
 |                                  | Select Window                    | Gamegogy                         |                  |
 |                                  | Select From Menu                 | Source|Web Service               |                  |
-|                                  | ${courseId}=                     | Get Selected Item From Combo Box | courseComboBox   |
+|                                  | ${courseId}=                     | Get Selected Item From Combo Box | CourseBox   |
 |                                  | Should Be Equal                  | 99000                            | ${courseId}      |
-|                                  | ${columnName}=                   | Get Selected Item From Combo Box | columnComboBox   |
+|                                  | ${columnName}=                   | Get Selected Item From Combo Box | AssignmentBox   |
 |                                  | Should Be Equal                  | Total                            | ${columnName}    |
-|                                  | Select From Combo Box            | courseComboBox                   | 9                |
-|                                  | Select From Combo Box            | columnComboBox                   | Assignment 7     |
+|                                  | Select From Combo Box            | CourseBox                   | 9                |
+|                                  | Select From Combo Box            | AssignmentBox                   | Assignment 7     |
 |                                  | Label Text Should Be             | courseTerm                       | Spring 2012      |
 |                                  | Label Text Should Be             | courseEnrollment                 | 25               |
 |                                  | Label Text Should Be             | studentId                        | ID: 111122           |
@@ -68,8 +68,8 @@
 |                                  | Select From Menu                 | Source|Resource File             |                  |
 |                                  | Menu Item Should Be Selected     | Source|Resource File             |                  |
 |                                  | Menu Item Should Not Be Selected | Web Service                      |                  |
-|                                  | ${courseId}=                     | Get Selected Item From Combo Box | courseComboBox   |
+|                                  | ${courseId}=                     | Get Selected Item From Combo Box | CourseBox   |
 |                                  | Should Be Equal                  | 99000                            | ${courseId}      |
-|                                  | ${columnName}=                   | Get Selected Item From Combo Box | columnComboBox   |
+|                                  | ${columnName}=                   | Get Selected Item From Combo Box | AssignmentBox   |
 |                                  | Should Be Equal                  | Total                            | ${columnName}    |
 |                                  | Close Window                     | Gamegogy                         |                  |

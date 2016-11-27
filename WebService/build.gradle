@@ -1,0 +1,32 @@
+buildscript {
+  repositories {
+      mavenCentral()
+      jcenter()
+  }
+  dependencies {
+    classpath "org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE"
+    classpath "net.sf.opencsv:opencsv:2.3"
+    classpath("org.springframework.boot:spring-boot-starter-web:1.4.2.RELEASE")
+    classpath('org.springframework.boot:spring-boot-starter-test:1.4.2.RELEASE')
+    classpath('com.jayway.jsonpath:json-path:2.2.0')
+  }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+version = "0.0.1"
+
+springBoot {
+    mainClass = "edu.jsu.mcis.webservice.WebService"
+}
+
+dependencies {
+  compile rootProject
+  compile "net.sf.opencsv:opencsv:2.3"
+  compile("org.springframework.boot:spring-boot-starter-web:1.4.2.RELEASE")
+  testCompile('org.springframework.boot:spring-boot-starter-test:1.4.2.RELEASE')
+  testCompile('com.jayway.jsonpath:json-path:2.2.0')
+}
