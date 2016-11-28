@@ -20,12 +20,12 @@ public class StudentTest {
     
     @Test
 	public void testFirstNameSetCorrectly() {
-		assertEquals("Jerrod", student.getFirstName());
+		assertEquals("Jerrod", student.getFirst());
 	}
     
     @Test
 	public void testLastNameSetCorrectly() {
-		assertEquals("Shields", student.getLastName());
+		assertEquals("Shields", student.getLast());
 	}
     
     @Test

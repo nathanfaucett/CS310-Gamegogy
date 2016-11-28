@@ -37,8 +37,8 @@ public class InformationPanel extends JPanel {
         String[] highestGrade = grades.getHighest(assignments[assignmentIndex]);
         Student currentStudent = database.getStudent(highestGrade[0]);
         id.setText("ID: " + currentStudent.getID());
-        name.setText("Name: " + currentStudent.getFirstName() + " " 
-                + currentStudent.getLastName());
+        name.setText("Name: " + currentStudent.getFirst() + " " 
+                + currentStudent.getLast());
         email.setText("Email: " + currentStudent.getEmail() + "@jsu.edu");
         score.setText("Score: " + highestGrade[1]);
     }
@@ -46,8 +46,8 @@ public class InformationPanel extends JPanel {
     public void setLabels(String studentID, float grade){
         Student currentStudent = database.getStudent(studentID);
         id.setText("ID: " + currentStudent.getID());
-        name.setText("Name: " + currentStudent.getFirstName() + " " 
-                + currentStudent.getLastName());
+        name.setText("Name: " + currentStudent.getFirst() + " " 
+                + currentStudent.getLast());
         email.setText("Email: " + currentStudent.getEmail() + "@jsu.edu");
         score.setText("Score: " +grade);
     }

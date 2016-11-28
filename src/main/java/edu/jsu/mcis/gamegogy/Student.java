@@ -21,8 +21,8 @@ public class Student implements Comparable<Student> {
     }
     
     public String getID() { return id; }
-    public String getFirstName() { return first; }
-    public String getLastName() { return last; }
+    public String getFirst() { return first; }
+    public String getLast() { return last; }
     public String getEmail() { return email; }
 
     public String toString(){

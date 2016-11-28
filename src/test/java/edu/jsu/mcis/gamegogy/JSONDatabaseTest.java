@@ -20,8 +20,8 @@ public class JSONDatabaseTest {
         Student dataStudent = database.getStudent("111111");
         
         assertEquals(testStudent.getID(), dataStudent.getID());
-        assertEquals(testStudent.getFirstName(), dataStudent.getFirstName());
-        assertEquals(testStudent.getLastName(), dataStudent.getLastName());
+        assertEquals(testStudent.getFirst(), dataStudent.getFirst());
+        assertEquals(testStudent.getLast(), dataStudent.getLast());
         assertEquals(testStudent.getEmail(), dataStudent.getEmail());
     }
     
@@ -46,8 +46,8 @@ public class JSONDatabaseTest {
         Student dataStudent = database.getStudent("111232");
         
         assertEquals(testStudent.getID(), dataStudent.getID());
-        assertEquals(testStudent.getFirstName(), dataStudent.getFirstName());
-        assertEquals(testStudent.getLastName(), dataStudent.getLastName());
+        assertEquals(testStudent.getFirst(), dataStudent.getFirst());
+        assertEquals(testStudent.getLast(), dataStudent.getLast());
         assertEquals(testStudent.getEmail(), dataStudent.getEmail());
     }
     
@@ -72,8 +72,8 @@ public class JSONDatabaseTest {
         Student testStudent = database.getStudent("111410");
         
         assertEquals(testStudent.getID(), dataStudent.getID());
-        assertEquals(testStudent.getFirstName(), dataStudent.getFirstName());
-        assertEquals(testStudent.getLastName(), dataStudent.getLastName());
+        assertEquals(testStudent.getFirst(), dataStudent.getFirst());
+        assertEquals(testStudent.getLast(), dataStudent.getLast());
         assertEquals(testStudent.getEmail(), dataStudent.getEmail());
     }
     
@@ -85,8 +85,8 @@ public class JSONDatabaseTest {
         Student testStudent = database.getStudent("111111");
         
         assertEquals(testStudent.getID(), dataStudent.getID());
-        assertEquals(testStudent.getFirstName(), dataStudent.getFirstName());
-        assertEquals(testStudent.getLastName(), dataStudent.getLastName());
+        assertEquals(testStudent.getFirst(), dataStudent.getFirst());
+        assertEquals(testStudent.getLast(), dataStudent.getLast());
         assertEquals(testStudent.getEmail(), dataStudent.getEmail());
     }
     
