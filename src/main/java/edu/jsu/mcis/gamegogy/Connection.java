@@ -19,7 +19,8 @@ import java.util.logging.Logger;
  * @author Nathan
  */
 public class Connection {
-    private static String baseURL = "http://inspired.jsu.edu:7272/gamegogy/";
+    //private static String baseURL = "http://inspired.jsu.edu:7272/gamegogy/";
+    private static String baseURL = "http://localhost:8080/";
    // private String relativeURL = "";
     
     public static String createConnection(String relativeURL) {

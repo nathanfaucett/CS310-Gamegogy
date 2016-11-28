@@ -280,3 +280,6 @@ runrobot.finalizedBy stopServer
 
 run.dependsOn startServer
 run.finalizedBy stopServer
+
+test.dependsOn startServer
+test.finalizedBy stopServer
