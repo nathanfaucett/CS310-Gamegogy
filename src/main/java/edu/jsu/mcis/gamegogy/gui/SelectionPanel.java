@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+@SuppressWarnings("unchecked") 
 public class SelectionPanel extends JPanel implements ActionListener {
     private String[] courseIDs;
     private Course[] courseObjects;

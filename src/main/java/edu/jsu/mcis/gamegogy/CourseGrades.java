@@ -34,6 +34,7 @@ public class CourseGrades {
         return "" + grade;
     }
     
+    @SuppressWarnings("unchecked") 
     public String[] getHighest(String assignment) {
         Map<String, Float> assignmentInfo = new HashMap<String, Float>();
         assignmentInfo = assignments.get(assignment);
