@@ -28,7 +28,6 @@ public class LeaderboardPanel extends JPanel
     
     public void refreshPanel(int assignmentIndexSelected, CourseGrades grades) {
         removeAll();
-        //String[] assignments = grades.getAssignments();
         List<String[]> gradeList = 
                 grades.getAll(grades.getAssignments()[assignmentIndexSelected]);
         barArray = new ArrayList<>();

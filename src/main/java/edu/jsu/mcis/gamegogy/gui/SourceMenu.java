@@ -59,7 +59,6 @@ public class SourceMenu extends JMenu implements ActionListener{
             jsonSwitch.setSelected(false);
 
             this.database.load(new CSVResource());
-            //these functions should probably be moved outside of SelectionPanel
             selectionPanel.courseBoxUtilized();
             selectionPanel.refreshCourses();
         }

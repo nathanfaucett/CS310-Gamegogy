@@ -22,7 +22,7 @@ public class CSVResource implements Resource {
         normalize();
     }
     
-    private void loadStudents() { //need to un hard code later
+    private void loadStudents() {
         studentInfo = CSVlocal.fileReader("students.csv");
     }
     

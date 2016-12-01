@@ -6,7 +6,6 @@ import au.com.bytecode.opencsv.*;
 
 public class CSVlocal {
 
-    //reconfigure to run on strings instead of files
     public static List<String[]> fileReader(String fileName) {
         CSVParser parser = new CSVParser();
         List<String[]> record = new ArrayList<>();
@@ -24,7 +23,6 @@ public class CSVlocal {
             return record;
 
         } catch(Exception ex) {
-            //ex.printStackTrace();
         }
         return record;
     }
